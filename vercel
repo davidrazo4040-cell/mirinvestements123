@@ -1,0 +1,7 @@
+# inicializa si aún no lo has hecho
+git init
+git add .
+git commit -m "Initial commit - MIR Investments site"
+git branch -M main
+git remote add origin https://github.com/<tu-usuario>/<tu-repo>.git
+git push -u origin main
