@@ -5,39 +5,39 @@ import Image from "next/image"
 const tenants = [
   { 
     name: "Walgreens", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Walgreens_Logo.svg/320px-Walgreens_Logo.svg.png"
+    logo: "https://logo.clearbit.com/walgreens.com"
   },
   { 
     name: "Teleperformance", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Teleperformance_logo.svg/320px-Teleperformance_logo.svg.png"
+    logo: "https://logo.clearbit.com/teleperformance.com"
   },
   { 
     name: "Dollar Tree", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Dollar_Tree_logo.svg/320px-Dollar_Tree_logo.svg.png"
+    logo: "https://logo.clearbit.com/dollartree.com"
   },
   { 
     name: "DaVita", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/DaVita_logo.svg/320px-DaVita_logo.svg.png"
+    logo: "https://logo.clearbit.com/davita.com"
   },
   { 
     name: "O'Reilly Auto Parts", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/O%27Reilly_Auto_Parts_Logo.svg/320px-O%27Reilly_Auto_Parts_Logo.svg.png"
+    logo: "https://logo.clearbit.com/oreillyauto.com"
   },
   { 
     name: "Ace Hardware", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Ace_Hardware_Logo.svg/320px-Ace_Hardware_Logo.svg.png"
+    logo: "https://logo.clearbit.com/acehardware.com"
   },
   { 
     name: "Office Depot", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Office_Depot_logo.svg/320px-Office_Depot_logo.svg.png"
+    logo: "https://logo.clearbit.com/officedepot.com"
   },
   { 
     name: "Aaron's", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Aaron%27s%2C_Inc._logo.svg/320px-Aaron%27s%2C_Inc._logo.svg.png"
+    logo: "https://logo.clearbit.com/aarons.com"
   },
   { 
     name: "Santander", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Banco_Santander_Logotipo.svg/320px-Banco_Santander_Logotipo.svg.png"
+    logo: "https://logo.clearbit.com/santander.com"
   },
 ]
 
