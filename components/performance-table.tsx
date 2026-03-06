@@ -3,15 +3,9 @@
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { AlertCircle, Info } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart"
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid, LabelList } from "recharts"
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid, LabelList, Tooltip } from "recharts"
 
 // MIR Investment Performance data from PDF (2015-2025) in millions
 const performanceData = [
@@ -26,12 +20,7 @@ const performanceData = [
   { year: "2025", value: 129.5 },
 ]
 
-const chartConfig = {
-  value: {
-    label: "AUM (Millones USD)",
-    color: "hsl(var(--primary))",
-  },
-}
+
 
 export function PerformanceTable() {
   const [showMethodology, setShowMethodology] = useState(false)
@@ -86,29 +75,39 @@ export function PerformanceTable() {
             )}
 
             {/* Performance Chart */}
-            <ChartContainer config={chartConfig} className="h-[400px] w-full">
+            <div className="h-[400px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={performanceData} margin={{ top: 30, right: 30, left: 20, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} className="stroke-border" />
                   <XAxis
                     dataKey="year"
                     tickLine={false}
                     axisLine={false}
-                    tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
+                    className="text-xs fill-muted-foreground"
                   />
                   <YAxis
                     tickLine={false}
                     axisLine={false}
-                    tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
+                    className="text-xs fill-muted-foreground"
                     tickFormatter={(value) => `$${value}M`}
                   />
-                  <ChartTooltip
-                    content={<ChartTooltipContent />}
-                    formatter={(value) => [`$${value}M`, "AUM"]}
+                  <Tooltip
+                    content={({ active, payload, label }) => {
+                      if (active && payload && payload.length) {
+                        return (
+                          <div className="bg-background border border-border rounded-lg shadow-lg p-3">
+                            <p className="font-semibold">{label}</p>
+                            <p className="text-primary font-bold">${payload[0].value}M</p>
+                            <p className="text-xs text-muted-foreground">Activos Bajo Administración</p>
+                          </div>
+                        )
+                      }
+                      return null
+                    }}
                   />
                   <Bar
                     dataKey="value"
-                    fill="hsl(var(--primary))"
+                    fill="hsl(222.2 47.4% 11.2%)"
                     radius={[4, 4, 0, 0]}
                   >
                     <LabelList
@@ -120,7 +119,7 @@ export function PerformanceTable() {
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
-            </ChartContainer>
+            </div>
 
             {/* Summary Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-border">
