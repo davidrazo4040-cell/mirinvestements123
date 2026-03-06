@@ -1,15 +1,44 @@
 "use client"
 
+import Image from "next/image"
+
 const tenants = [
-  { name: "Walgreens", color: "#E62324" },
-  { name: "Teleperformance", color: "#742b8e" },
-  { name: "Dollar Tree", color: "#00954C" },
-  { name: "DaVita", color: "#0076b6" },
-  { name: "O'Reilly Auto Parts", color: "#00954C" },
-  { name: "Ace Hardware", color: "#E73137" },
-  { name: "Office Depot", color: "#CC0000" },
-  { name: "Aaron's", color: "#264392" },
-  { name: "Santander", color: "#EC0000" },
+  { 
+    name: "Walgreens", 
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Walgreens_Logo.svg/320px-Walgreens_Logo.svg.png"
+  },
+  { 
+    name: "Teleperformance", 
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Teleperformance_logo.svg/320px-Teleperformance_logo.svg.png"
+  },
+  { 
+    name: "Dollar Tree", 
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Dollar_Tree_logo.svg/320px-Dollar_Tree_logo.svg.png"
+  },
+  { 
+    name: "DaVita", 
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/DaVita_logo.svg/320px-DaVita_logo.svg.png"
+  },
+  { 
+    name: "O'Reilly Auto Parts", 
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/O%27Reilly_Auto_Parts_Logo.svg/320px-O%27Reilly_Auto_Parts_Logo.svg.png"
+  },
+  { 
+    name: "Ace Hardware", 
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Ace_Hardware_Logo.svg/320px-Ace_Hardware_Logo.svg.png"
+  },
+  { 
+    name: "Office Depot", 
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Office_Depot_logo.svg/320px-Office_Depot_logo.svg.png"
+  },
+  { 
+    name: "Aaron's", 
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Aaron%27s%2C_Inc._logo.svg/320px-Aaron%27s%2C_Inc._logo.svg.png"
+  },
+  { 
+    name: "Santander", 
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Banco_Santander_Logotipo.svg/320px-Banco_Santander_Logotipo.svg.png"
+  },
 ]
 
 export function TenantsCarousel() {
@@ -25,37 +54,35 @@ export function TenantsCarousel() {
 
         {/* Logos Grid - Infinite scroll effect */}
         <div className="relative overflow-hidden">
-          <div className="flex animate-scroll gap-12 py-8">
+          <div className="flex animate-scroll gap-16 py-8">
             {/* First set */}
-            <div className="flex gap-12 items-center min-w-max">
+            <div className="flex gap-16 items-center min-w-max">
               {tenants.map((tenant) => (
                 <div
                   key={tenant.name}
-                  className="flex items-center justify-center h-16 px-6 rounded-lg border border-border bg-background hover:shadow-lg transition-all duration-300"
+                  className="flex items-center justify-center h-20 w-40 px-4 rounded-lg bg-white hover:shadow-lg transition-all duration-300"
                 >
-                  <span
-                    className="text-xl md:text-2xl font-bold whitespace-nowrap"
-                    style={{ color: tenant.color }}
-                  >
-                    {tenant.name}
-                  </span>
+                  <img
+                    src={tenant.logo}
+                    alt={tenant.name}
+                    className="max-h-14 max-w-full object-contain"
+                  />
                 </div>
               ))}
             </div>
 
             {/* Duplicate for seamless loop */}
-            <div className="flex gap-12 items-center min-w-max">
+            <div className="flex gap-16 items-center min-w-max">
               {tenants.map((tenant) => (
                 <div
                   key={`${tenant.name}-dup`}
-                  className="flex items-center justify-center h-16 px-6 rounded-lg border border-border bg-background hover:shadow-lg transition-all duration-300"
+                  className="flex items-center justify-center h-20 w-40 px-4 rounded-lg bg-white hover:shadow-lg transition-all duration-300"
                 >
-                  <span
-                    className="text-xl md:text-2xl font-bold whitespace-nowrap"
-                    style={{ color: tenant.color }}
-                  >
-                    {tenant.name}
-                  </span>
+                  <img
+                    src={tenant.logo}
+                    alt={tenant.name}
+                    className="max-h-14 max-w-full object-contain"
+                  />
                 </div>
               ))}
             </div>
@@ -73,7 +100,7 @@ export function TenantsCarousel() {
           }
         }
         .animate-scroll {
-          animation: scroll 25s linear infinite;
+          animation: scroll 30s linear infinite;
         }
         .animate-scroll:hover {
           animation-play-state: paused;

@@ -166,8 +166,9 @@ export function ContactForm() {
                   <div>
                     <div className="font-semibold mb-1">Portafolio PDF</div>
                     <a
-                      href="/MIR-INVESTMENTS-PORTFOLIO.pdf"
-                      download
+                      href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MIR%20INVESTMENTS%20PORTFOLIO%20MARCH%202026%20%281%29-Jq8Ve6KA2X85Xd3vU7jy9H2WLBvsF6.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-sm text-muted-foreground hover:text-primary"
                     >
                       Descargar Portafolio Completo
