@@ -95,9 +95,23 @@ export function PropertyCard({ property, onRequestInfo }: PropertyCardProps) {
         </div>
 
         {/* Investment Amount */}
-        <div className="pt-3 border-t border-border">
-          <div className="text-xs text-muted-foreground mb-1">Inversión Mínima</div>
-          <div className="text-2xl font-bold text-primary">{formatCurrency(property.minInvestment)}</div>
+        <div className="pt-3 border-t border-border space-y-2">
+          <div>
+            <div className="text-xs text-muted-foreground mb-1">Inversión Mínima</div>
+            <div className="text-2xl font-bold text-primary">{formatCurrency(property.minInvestment)}</div>
+          </div>
+          {property.noi && (
+            <div className="flex justify-between text-sm">
+              <span className="text-muted-foreground">NOI Anual:</span>
+              <span className="font-semibold">{formatCurrency(property.noi)}</span>
+            </div>
+          )}
+          {property.allocationLimit && (
+            <div className="flex justify-between text-sm">
+              <span className="text-muted-foreground">Límite de Inversión:</span>
+              <span className="font-semibold">{formatCurrency(property.allocationLimit)} ({property.allocationPercent}%)</span>
+            </div>
+          )}
         </div>
       </CardContent>
 

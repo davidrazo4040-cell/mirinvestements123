@@ -23,7 +23,7 @@ export function HowItWorks() {
       icon: Building2,
       title: "Selección de Propiedad",
       description:
-        "Te presentamos propiedades que coinciden con tu perfil. Recibes fichas técnicas completas con due diligence externo, análisis de mercado y proyecciones financieras.",
+        "Identificación estratégica de propiedades estabilizadas o en desarrollo. Análisis de mercado exhaustivo, due diligence completo, estructura legal y financiera óptima, y negociación con arrendadores, desarrolladores y arrendatarios.",
       cta: "Ver Portafolio",
       action: () => {
         const element = document.getElementById("portafolio")
@@ -33,9 +33,9 @@ export function HowItWorks() {
     {
       number: "03",
       icon: TrendingUp,
-      title: "Distribuciones y Reportes",
+      title: "Distribuciones y Participación",
       description:
-        "Recibe distribuciones trimestrales directas a tu cuenta. Acceso 24/7 a tu portal de inversionista con reportes detallados, estados financieros y actualizaciones de propiedades.",
+        "Distribuciones trimestrales directas. Juntas periódicas donde los inversionistas participan en decisiones clave. Gestión profesional a través de AppFolio con acceso 24/7 a reportes, estados financieros y actualizaciones.",
       cta: "Conocer Más",
       action: () => {
         const element = document.getElementById("por-que-mir")

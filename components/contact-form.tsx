@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { CheckCircle2, Mail, Phone, MessageSquare } from "lucide-react"
+import { CheckCircle2, Mail, Phone, MessageSquare, Download } from "lucide-react"
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -50,24 +50,42 @@ export function ContactForm() {
 
     setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    setIsSubmitting(false)
-    setIsSuccess(true)
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        investmentRange: "",
-        message: "",
-        consent: false,
+    try {
+      // Submit to Google Sheets via API route
+      const response = await fetch("/api/submit-lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+        }),
       })
-      setIsSuccess(false)
-    }, 3000)
+
+      if (!response.ok) {
+        throw new Error("Error al enviar")
+      }
+
+      setIsSuccess(true)
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          investmentRange: "",
+          message: "",
+          consent: false,
+        })
+        setIsSuccess(false)
+      }, 3000)
+    } catch (error) {
+      console.error("Error submitting form:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -92,10 +110,10 @@ export function ContactForm() {
                   <div>
                     <div className="font-semibold mb-1">Email</div>
                     <a
-                      href="mailto:info@mirinvestments.com"
+                      href="mailto:rmiranda@grupomirsa.mx"
                       className="text-sm text-muted-foreground hover:text-primary"
                     >
-                      info@mirinvestments.com
+                      rmiranda@grupomirsa.mx
                     </a>
                   </div>
                 </div>
@@ -110,8 +128,8 @@ export function ContactForm() {
                   </div>
                   <div>
                     <div className="font-semibold mb-1">Teléfono</div>
-                    <a href="tel:+525555555555" className="text-sm text-muted-foreground hover:text-primary">
-                      +52 (55) 5555-5555
+                    <a href="tel:+525535650308" className="text-sm text-muted-foreground hover:text-primary">
+                      +52 (55) 3565-0308
                     </a>
                   </div>
                 </div>
@@ -127,12 +145,32 @@ export function ContactForm() {
                   <div>
                     <div className="font-semibold mb-1">WhatsApp</div>
                     <a
-                      href="https://wa.me/525555555555"
+                      href="https://wa.me/525535650308"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-muted-foreground hover:text-primary"
                     >
-                      +52 (55) 5555-5555
+                      +52 (55) 3565-0308
+                    </a>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-primary/5 border-primary/20">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Download className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-semibold mb-1">Portafolio PDF</div>
+                    <a
+                      href="/MIR-INVESTMENTS-PORTFOLIO.pdf"
+                      download
+                      className="text-sm text-muted-foreground hover:text-primary"
+                    >
+                      Descargar Portafolio Completo
                     </a>
                   </div>
                 </div>
@@ -227,10 +265,10 @@ export function ContactForm() {
                           <SelectValue placeholder="Selecciona un rango" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="120k-250k">USD $120,000 - $250,000</SelectItem>
-                          <SelectItem value="250k-500k">USD $250,000 - $500,000</SelectItem>
+                          <SelectItem value="200k-500k">USD $200,000 - $500,000</SelectItem>
                           <SelectItem value="500k-1m">USD $500,000 - $1,000,000</SelectItem>
-                          <SelectItem value="1m+">USD $1,000,000+</SelectItem>
+                          <SelectItem value="1m-5m">USD $1,000,000 - $5,000,000</SelectItem>
+                          <SelectItem value="5m+">USD $5,000,000+</SelectItem>
                         </SelectContent>
                       </Select>
                       {errors.investmentRange && <p className="text-sm text-destructive">{errors.investmentRange}</p>}

@@ -33,12 +33,12 @@ export function Hero() {
 
           {/* Main Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-balance mb-6 leading-tight">
-            Invierte en inmuebles comerciales <span className="text-primary">AAA</span> en Estados Unidos
+            Tu puerta a la inversión inteligente en <span className="text-primary">Estados Unidos</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground text-balance mb-10 max-w-3xl mx-auto leading-relaxed">
-            Acceso institucional, rendimientos históricos, transparencia total.
+            Inmuebles premium, transparencia total, ganancias que te respaldan.
           </p>
 
           {/* CTA Buttons */}
@@ -68,7 +68,7 @@ export function Hero() {
             </div>
             <div className="flex items-center justify-center gap-3 text-sm text-muted-foreground">
               <DollarSign className="h-5 w-5 text-accent flex-shrink-0" />
-              <span className="text-left">Inversión dolarizada desde USD 120,000</span>
+              <span className="text-left">Inversión dolarizada desde USD 200,000</span>
             </div>
           </div>
         </div>

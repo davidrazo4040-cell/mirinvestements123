@@ -1,7 +1,7 @@
 export interface Property {
   id: string
   name: string
-  type: "Oficinas" | "Retail" | "Industrial"
+  type: "Oficinas" | "Retail" | "Industrial" | "Multifamiliar" | "Data Center"
   city: string
   state: string
   country: string
@@ -23,6 +23,14 @@ export interface Property {
   yearBuilt: number
   sqft: number
   tenants: string[]
+  noi?: number
+  allocationLimit?: number
+  allocationPercent?: number
+  units?: number
+  buildings?: number
+  delivery?: string
+  capacity?: string
+  exclusiveInvestment?: boolean
 }
 
 export interface FilterState {

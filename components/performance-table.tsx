@@ -4,58 +4,34 @@ import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { AlertCircle, Info } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { formatPercent, formatCurrency } from "@/utils/performance-math"
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart"
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid, LabelList } from "recharts"
 
+// MIR Investment Performance data from PDF (2015-2025) in millions
 const performanceData = [
-  {
-    property: "Corporate Plaza Austin",
-    period: "2023 Q4",
-    irrGross: 12.5,
-    irrNet: 10.8,
-    distributions: 45000,
-    appreciation: 8.2,
-    notes: "Incluye refinanciamiento",
-  },
-  {
-    property: "Retail Center Miami",
-    period: "2023 Q4",
-    irrGross: 11.2,
-    irrNet: 9.5,
-    distributions: 38000,
-    appreciation: 6.5,
-    notes: "",
-  },
-  {
-    property: "Industrial Park Dallas",
-    period: "2023 Q4",
-    irrGross: 13.5,
-    irrNet: 11.2,
-    distributions: 52000,
-    appreciation: 9.8,
-    notes: "",
-  },
-  {
-    property: "Medical Office Phoenix",
-    period: "2023 Q4",
-    irrGross: 10.8,
-    irrNet: 9.2,
-    distributions: 35000,
-    appreciation: 5.5,
-    notes: "",
-  },
-  {
-    property: "Distribution Center Atlanta",
-    period: "2023 Q4",
-    irrGross: 14.0,
-    irrNet: 11.8,
-    distributions: 58000,
-    appreciation: 10.5,
-    notes: "",
-  },
+  { year: "2015", value: 6.1 },
+  { year: "2018", value: 12.1 },
+  { year: "2019", value: 24.6 },
+  { year: "2020", value: 35.6 },
+  { year: "2021", value: 54.4 },
+  { year: "2022", value: 65.7 },
+  { year: "2023", value: 93.1 },
+  { year: "2024", value: 110.1 },
+  { year: "2025", value: 129.5 },
 ]
+
+const chartConfig = {
+  value: {
+    label: "AUM (Millones USD)",
+    color: "hsl(var(--primary))",
+  },
+}
 
 export function PerformanceTable() {
   const [showMethodology, setShowMethodology] = useState(false)
@@ -66,7 +42,7 @@ export function PerformanceTable() {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Desempeño Histórico</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Transparencia total en el rendimiento de nuestras propiedades
+            Crecimiento sostenido de activos bajo administración desde 2015
           </p>
         </div>
 
@@ -83,10 +59,10 @@ export function PerformanceTable() {
         <Card>
           <CardHeader>
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <CardTitle>Rendimientos por Propiedad - Q4 2023</CardTitle>
+              <CardTitle>MIR Investment Performance 2015 - 2025</CardTitle>
               <Button variant="outline" size="sm" onClick={() => setShowMethodology(!showMethodology)}>
                 <Info className="h-4 w-4 mr-2" />
-                Metodología de Cálculo
+                Metodología
               </Button>
             </div>
           </CardHeader>
@@ -95,95 +71,74 @@ export function PerformanceTable() {
               <Alert className="mb-6">
                 <AlertDescription className="text-sm space-y-2">
                   <p>
-                    <strong>IRR Bruto:</strong> Tasa interna de retorno antes de comisiones y gastos, calculada con base
-                    en flujos de efectivo operativos y apreciación del activo.
+                    <strong>AUM (Activos Bajo Administración):</strong> Valor total de las propiedades en el portafolio,
+                    expresado en millones de dólares estadounidenses.
                   </p>
                   <p>
-                    <strong>IRR Neto:</strong> Tasa interna de retorno después de comisiones de administración (2%
-                    anual) y gastos operativos. Este es el rendimiento real para el inversionista.
-                  </p>
-                  <p>
-                    <strong>Distribuciones:</strong> Pagos trimestrales en efectivo derivados del ingreso neto operativo
-                    de la propiedad.
-                  </p>
-                  <p>
-                    <strong>Apreciación:</strong> Incremento en el valor de la propiedad basado en valuaciones
-                    independientes anuales.
+                    <strong>Crecimiento:</strong> El gráfico muestra el crecimiento acumulado del portafolio desde 2015,
+                    reflejando tanto nuevas adquisiciones como la apreciación de propiedades existentes.
                   </p>
                   <p className="text-xs text-muted-foreground mt-2">
-                    Nota: Algunas propiedades utilizan líneas de crédito o subscription facilities para optimizar
-                    distribuciones. Esto se indica en las notas correspondientes.
+                    Nota: Los valores incluyen propiedades estabilizadas y proyectos en desarrollo.
                   </p>
                 </AlertDescription>
               </Alert>
             )}
 
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Propiedad</TableHead>
-                    <TableHead>Periodo</TableHead>
-                    <TableHead className="text-right">
-                      <div className="flex flex-col items-end">
-                        <span>IRR Bruto</span>
-                        <span className="text-xs font-normal text-muted-foreground">(antes de comisiones)</span>
-                      </div>
-                    </TableHead>
-                    <TableHead className="text-right">
-                      <div className="flex flex-col items-end">
-                        <span>IRR Neto</span>
-                        <span className="text-xs font-normal text-muted-foreground">(después de comisiones)</span>
-                      </div>
-                    </TableHead>
-                    <TableHead className="text-right">Distribuciones</TableHead>
-                    <TableHead className="text-right">Apreciación</TableHead>
-                    <TableHead>Notas</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {performanceData.map((row, index) => (
-                    <TableRow key={index}>
-                      <TableCell className="font-medium">{row.property}</TableCell>
-                      <TableCell>{row.period}</TableCell>
-                      <TableCell className="text-right">
-                        <Badge variant="secondary" className="font-mono">
-                          {formatPercent(row.irrGross)}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <Badge variant="default" className="font-mono bg-accent text-accent-foreground">
-                          {formatPercent(row.irrNet)}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="text-right font-mono">{formatCurrency(row.distributions)}</TableCell>
-                      <TableCell className="text-right font-mono">{formatPercent(row.appreciation)}</TableCell>
-                      <TableCell>
-                        {row.notes && <span className="text-xs text-muted-foreground italic">{row.notes}</span>}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
+            {/* Performance Chart */}
+            <ChartContainer config={chartConfig} className="h-[400px] w-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={performanceData} margin={{ top: 30, right: 30, left: 20, bottom: 20 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
+                  <XAxis
+                    dataKey="year"
+                    tickLine={false}
+                    axisLine={false}
+                    tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
+                  />
+                  <YAxis
+                    tickLine={false}
+                    axisLine={false}
+                    tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
+                    tickFormatter={(value) => `$${value}M`}
+                  />
+                  <ChartTooltip
+                    content={<ChartTooltipContent />}
+                    formatter={(value) => [`$${value}M`, "AUM"]}
+                  />
+                  <Bar
+                    dataKey="value"
+                    fill="hsl(var(--primary))"
+                    radius={[4, 4, 0, 0]}
+                  >
+                    <LabelList
+                      dataKey="value"
+                      position="top"
+                      formatter={(value: number) => `$${value}M`}
+                      className="fill-foreground text-xs"
+                    />
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </ChartContainer>
 
             {/* Summary Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-border">
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">12.0%</div>
-                <div className="text-sm text-muted-foreground">IRR Bruto Promedio</div>
+                <div className="text-2xl font-bold text-primary">$129.5M</div>
+                <div className="text-sm text-muted-foreground">AUM Actual (2025)</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-accent">10.5%</div>
-                <div className="text-sm text-muted-foreground">IRR Neto Promedio</div>
+                <div className="text-2xl font-bold text-accent">21x</div>
+                <div className="text-sm text-muted-foreground">Crecimiento desde 2015</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-foreground">{formatCurrency(45600)}</div>
-                <div className="text-sm text-muted-foreground">Distribución Promedio</div>
+                <div className="text-2xl font-bold text-foreground">17</div>
+                <div className="text-sm text-muted-foreground">Propiedades en Portafolio</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-600">8.1%</div>
-                <div className="text-sm text-muted-foreground">Apreciación Promedio</div>
+                <div className="text-2xl font-bold text-green-600">10+</div>
+                <div className="text-sm text-muted-foreground">Años de Experiencia</div>
               </div>
             </div>
           </CardContent>

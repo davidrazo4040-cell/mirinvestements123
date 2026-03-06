@@ -7,25 +7,25 @@ export function TrustBar() {
   const stats = [
     {
       icon: Building2,
-      value: "15+",
+      value: "17",
       label: "Propiedades",
       description: "Activos comerciales AAA",
     },
     {
       icon: Users,
-      value: "200+",
+      value: "~100",
       label: "Inversionistas",
       description: "Confiando en MIR",
     },
     {
       icon: TrendingUp,
-      value: "$85M+",
+      value: "$100M+",
       label: "AUM",
       description: "Activos bajo administración",
     },
     {
       icon: Award,
-      value: "8+",
+      value: "10+",
       label: "Años",
       description: "De experiencia",
     },

@@ -187,12 +187,12 @@ export function Footer() {
             <div className="flex flex-wrap justify-center gap-4">
               <span>Ciudad de México, México</span>
               <span>•</span>
-              <a href="mailto:info@mirinvestments.com" className="hover:text-primary-foreground transition-colors">
-                info@mirinvestments.com
+              <a href="mailto:rmiranda@grupomirsa.mx" className="hover:text-primary-foreground transition-colors">
+                rmiranda@grupomirsa.mx
               </a>
               <span>•</span>
-              <a href="tel:+525555555555" className="hover:text-primary-foreground transition-colors">
-                +52 (55) 5555-5555
+              <a href="tel:+525535650308" className="hover:text-primary-foreground transition-colors">
+                +52 (55) 3565-0308
               </a>
             </div>
           </div>
