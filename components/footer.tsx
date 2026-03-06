@@ -187,8 +187,8 @@ export function Footer() {
             <div className="flex flex-wrap justify-center gap-4">
               <span>Ciudad de México, México</span>
               <span>•</span>
-              <a href="mailto:rmiranda@grupomirsa.mx" className="hover:text-primary-foreground transition-colors">
-                rmiranda@grupomirsa.mx
+              <a href="mailto:drazo@mirinvestments.com" className="hover:text-primary-foreground transition-colors">
+                drazo@mirinvestments.com
               </a>
               <span>•</span>
               <a href="tel:+525535650308" className="hover:text-primary-foreground transition-colors">

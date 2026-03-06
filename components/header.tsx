@@ -60,6 +60,12 @@ export function Header() {
               Cómo Funciona
             </button>
             <button
+              onClick={() => scrollToSection("tecnologia")}
+              className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+            >
+              Tecnología
+            </button>
+            <button
               onClick={() => scrollToSection("por-que-mir")}
               className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
             >
@@ -101,6 +107,12 @@ export function Header() {
                 className="text-left text-sm font-medium text-foreground/80 hover:text-foreground transition-colors py-2"
               >
                 Cómo Funciona
+              </button>
+              <button
+                onClick={() => scrollToSection("tecnologia")}
+                className="text-left text-sm font-medium text-foreground/80 hover:text-foreground transition-colors py-2"
+              >
+                Tecnología
               </button>
               <button
                 onClick={() => scrollToSection("por-que-mir")}

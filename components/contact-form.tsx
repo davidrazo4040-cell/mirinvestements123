@@ -110,10 +110,10 @@ export function ContactForm() {
                   <div>
                     <div className="font-semibold mb-1">Email</div>
                     <a
-                      href="mailto:rmiranda@grupomirsa.mx"
+                      href="mailto:drazo@mirinvestments.com"
                       className="text-sm text-muted-foreground hover:text-primary"
                     >
-                      rmiranda@grupomirsa.mx
+                      drazo@mirinvestments.com
                     </a>
                   </div>
                 </div>
