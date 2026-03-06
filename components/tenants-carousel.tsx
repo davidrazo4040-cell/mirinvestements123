@@ -1,45 +1,72 @@
 "use client"
 
-import Image from "next/image"
-
 const tenants = [
   { 
     name: "Walgreens", 
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Walgreens_2020_primary_logo.svg-HFQSPe5Yy45gTltPU3Oi9lPqlhUQDm.xml"
+    logo: null,
+    color: "#E31837"
   },
   { 
     name: "Teleperformance", 
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teleperformance_logo.svg-UuuDGNNj9ldUXgvHF7VFDbvw8Cn7cP.xml"
+    logo: null,
+    color: "#6B2D7B"
   },
   { 
     name: "Dollar Tree", 
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Dollar_Tree_logo-FdwpUdVOlJj2sckevCrV4zauBULEpd.svg"
+    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Dollar_Tree_logo-FdwpUdVOlJj2sckevCrV4zauBULEpd.svg",
+    color: "#00954C"
   },
   { 
     name: "DaVita", 
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/davita-logo-svg-vector-ZqKsJ92rm12O8lKhCNhn5dT0gf6W8D.svg"
+    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/davita-logo-svg-vector-ZqKsJ92rm12O8lKhCNhn5dT0gf6W8D.svg",
+    color: "#0076B6"
   },
   { 
     name: "O'Reilly Auto Parts", 
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/O%27Reilly_Auto_Parts_Logo.svg-5sZI3YGVaz6jZ1UJAbU2NwAvlShMAZ.xml"
+    logo: null,
+    color: "#00703C"
   },
   { 
     name: "Ace Hardware", 
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ace_Hardware_Logo.svg-yubItGxGxAXA13B3gmplw9ppHEWkDX.xml"
+    logo: null,
+    color: "#D40029"
   },
   { 
     name: "Office Depot", 
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Office-Depot-Logo.svg-HDELQs9ua9o1rw8pUXlHWNda3agZKc.xml"
+    logo: null,
+    color: "#CC0000"
   },
   { 
     name: "Aaron's", 
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Aaron%27s%2C_Inc._logo.svg-oogRdvczGACB3bibQPz6d3CUFJQR2S.xml"
+    logo: null,
+    color: "#003DA5"
   },
   { 
     name: "Santander", 
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Banco_Santander_Logotipo_%282007-2018%29.svg-Qa0Qb0TWNjFCOQYhG2OijtQqtXpaEB.xml"
+    logo: null,
+    color: "#EC0000"
   },
 ]
+
+function TenantLogo({ tenant }: { tenant: typeof tenants[0] }) {
+  if (tenant.logo) {
+    return (
+      <img
+        src={tenant.logo}
+        alt={tenant.name}
+        className="max-h-12 max-w-full object-contain"
+      />
+    )
+  }
+  return (
+    <span 
+      className="text-lg md:text-xl font-bold whitespace-nowrap"
+      style={{ color: tenant.color }}
+    >
+      {tenant.name}
+    </span>
+  )
+}
 
 export function TenantsCarousel() {
   return (
@@ -54,35 +81,27 @@ export function TenantsCarousel() {
 
         {/* Logos Grid - Infinite scroll effect */}
         <div className="relative overflow-hidden">
-          <div className="flex animate-scroll gap-16 py-8">
+          <div className="flex animate-scroll gap-12 py-8">
             {/* First set */}
-            <div className="flex gap-16 items-center min-w-max">
+            <div className="flex gap-12 items-center min-w-max">
               {tenants.map((tenant) => (
                 <div
                   key={tenant.name}
-                  className="flex items-center justify-center h-20 w-40 px-4 rounded-lg bg-white hover:shadow-lg transition-all duration-300"
+                  className="flex items-center justify-center h-16 px-6 rounded-lg bg-white border border-border hover:shadow-lg transition-all duration-300"
                 >
-                  <img
-                    src={tenant.logo}
-                    alt={tenant.name}
-                    className="max-h-14 max-w-full object-contain"
-                  />
+                  <TenantLogo tenant={tenant} />
                 </div>
               ))}
             </div>
 
             {/* Duplicate for seamless loop */}
-            <div className="flex gap-16 items-center min-w-max">
+            <div className="flex gap-12 items-center min-w-max">
               {tenants.map((tenant) => (
                 <div
                   key={`${tenant.name}-dup`}
-                  className="flex items-center justify-center h-20 w-40 px-4 rounded-lg bg-white hover:shadow-lg transition-all duration-300"
+                  className="flex items-center justify-center h-16 px-6 rounded-lg bg-white border border-border hover:shadow-lg transition-all duration-300"
                 >
-                  <img
-                    src={tenant.logo}
-                    alt={tenant.name}
-                    className="max-h-14 max-w-full object-contain"
-                  />
+                  <TenantLogo tenant={tenant} />
                 </div>
               ))}
             </div>
