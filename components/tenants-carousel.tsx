@@ -5,39 +5,39 @@ import Image from "next/image"
 const tenants = [
   { 
     name: "Walgreens", 
-    logo: "https://logo.clearbit.com/walgreens.com"
+    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Walgreens_2020_primary_logo.svg-HFQSPe5Yy45gTltPU3Oi9lPqlhUQDm.xml"
   },
   { 
     name: "Teleperformance", 
-    logo: "https://logo.clearbit.com/teleperformance.com"
+    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teleperformance_logo.svg-UuuDGNNj9ldUXgvHF7VFDbvw8Cn7cP.xml"
   },
   { 
     name: "Dollar Tree", 
-    logo: "https://logo.clearbit.com/dollartree.com"
+    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Dollar_Tree_logo-FdwpUdVOlJj2sckevCrV4zauBULEpd.svg"
   },
   { 
     name: "DaVita", 
-    logo: "https://logo.clearbit.com/davita.com"
+    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/davita-logo-svg-vector-ZqKsJ92rm12O8lKhCNhn5dT0gf6W8D.svg"
   },
   { 
     name: "O'Reilly Auto Parts", 
-    logo: "https://logo.clearbit.com/oreillyauto.com"
+    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/O%27Reilly_Auto_Parts_Logo.svg-5sZI3YGVaz6jZ1UJAbU2NwAvlShMAZ.xml"
   },
   { 
     name: "Ace Hardware", 
-    logo: "https://logo.clearbit.com/acehardware.com"
+    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ace_Hardware_Logo.svg-yubItGxGxAXA13B3gmplw9ppHEWkDX.xml"
   },
   { 
     name: "Office Depot", 
-    logo: "https://logo.clearbit.com/officedepot.com"
+    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Office-Depot-Logo.svg-HDELQs9ua9o1rw8pUXlHWNda3agZKc.xml"
   },
   { 
     name: "Aaron's", 
-    logo: "https://logo.clearbit.com/aarons.com"
+    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Aaron%27s%2C_Inc._logo.svg-oogRdvczGACB3bibQPz6d3CUFJQR2S.xml"
   },
   { 
     name: "Santander", 
-    logo: "https://logo.clearbit.com/santander.com"
+    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Banco_Santander_Logotipo_%282007-2018%29.svg-Qa0Qb0TWNjFCOQYhG2OijtQqtXpaEB.xml"
   },
 ]
 
