@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -16,19 +15,12 @@ interface PropertyCardProps {
 export function PropertyCard({ property, onRequestInfo }: PropertyCardProps) {
   return (
     <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-      <div className="relative h-48 w-full overflow-hidden">
-        <Image
-          src={property.image || "/placeholder.svg"}
-          alt={property.name}
-          fill
-          className="object-cover hover:scale-105 transition-transform duration-300"
-        />
-        <Badge className="absolute top-3 right-3 bg-background/90 backdrop-blur-sm">{property.type}</Badge>
-        <Badge
-          className={`absolute top-3 left-3 ${getRiskColor(property.riskProfile)} bg-background/90 backdrop-blur-sm`}
-        >
+      {/* Header with badges instead of image */}
+      <div className="p-4 bg-primary/5 border-b border-border flex items-center justify-between">
+        <Badge className={`${getRiskColor(property.riskProfile)}`}>
           {property.riskProfile}
         </Badge>
+        <Badge variant="outline">{property.type}</Badge>
       </div>
 
       <CardHeader className="pb-3">
