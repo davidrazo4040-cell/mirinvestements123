@@ -3,11 +3,11 @@
 const tenants = [
   { 
     name: "Walgreens", 
-    logo: "/logos/walgreens.jpg"
+    logo: "https://companieslogo.com/img/orig/WBA-90d64dd4.png"
   },
   { 
     name: "Teleperformance", 
-    logo: "/logos/teleperformance.jpg"
+    logo: "https://companieslogo.com/img/orig/TEP.PA-17802f52.png"
   },
   { 
     name: "Dollar Tree", 
@@ -19,23 +19,23 @@ const tenants = [
   },
   { 
     name: "O'Reilly Auto Parts", 
-    logo: "/logos/oreilly.jpg"
+    logo: "https://companieslogo.com/img/orig/ORLY-6e5b76f7.png"
   },
   { 
     name: "Ace Hardware", 
-    logo: "/logos/acehardware.jpg"
+    logo: "https://logotyp.us/file/ace-hardware.svg"
   },
   { 
     name: "Office Depot", 
-    logo: "/logos/officedepot.jpg"
+    logo: "https://companieslogo.com/img/orig/ODP-f1e90da7.png"
   },
   { 
     name: "Aaron's", 
-    logo: "/logos/aarons.jpg"
+    logo: "https://companieslogo.com/img/orig/AAN-bc8a2eb5.png"
   },
   { 
     name: "Santander", 
-    logo: "/logos/santander.jpg"
+    logo: "https://companieslogo.com/img/orig/SAN-1f33439f.png"
   },
 ]
 
