@@ -3,11 +3,11 @@
 const tenants = [
   { 
     name: "Walgreens", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Walgreens_Logo.svg/200px-Walgreens_Logo.svg.png"
+    logo: "/logos/walgreens.jpg"
   },
   { 
     name: "Teleperformance", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Teleperformance_logo.svg/200px-Teleperformance_logo.svg.png"
+    logo: "/logos/teleperformance.jpg"
   },
   { 
     name: "Dollar Tree", 
@@ -19,23 +19,23 @@ const tenants = [
   },
   { 
     name: "O'Reilly Auto Parts", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/O%27Reilly_Auto_Parts_Logo.svg/200px-O%27Reilly_Auto_Parts_Logo.svg.png"
+    logo: "/logos/oreilly.jpg"
   },
   { 
     name: "Ace Hardware", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Ace_Hardware_Logo.svg/200px-Ace_Hardware_Logo.svg.png"
+    logo: "/logos/acehardware.jpg"
   },
   { 
     name: "Office Depot", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Office_Depot_logo.svg/200px-Office_Depot_logo.svg.png"
+    logo: "/logos/officedepot.jpg"
   },
   { 
     name: "Aaron's", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Aaron%27s%2C_Inc._logo.svg/200px-Aaron%27s%2C_Inc._logo.svg.png"
+    logo: "/logos/aarons.jpg"
   },
   { 
     name: "Santander", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Banco_Santander_Logotipo.svg/200px-Banco_Santander_Logotipo.svg.png"
+    logo: "/logos/santander.jpg"
   },
 ]
 
