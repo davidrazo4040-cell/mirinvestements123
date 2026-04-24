@@ -45,7 +45,7 @@ export function Hero() {
           {/* Subheading */}
           <p className="animate-fade-in-up delay-200 text-lg sm:text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
             Acceso institucional, rendimientos históricos comprobados, transparencia total.
-            Inversión dolarizada desde USD 120,000.
+            Inversión dolarizada desde USD 200,000.
           </p>
 
           {/* CTA Buttons */}
@@ -70,9 +70,9 @@ export function Hero() {
           {/* Trust signals */}
           <div className="animate-fade-in-up delay-400 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
             {[
-              { icon: CheckCircle2, text: "Propiedades existentes y rentadas" },
+              { icon: CheckCircle2, text: "Propiedades existentes y rentadas NNN" },
               { icon: Shield, text: "Due diligence externo certificado" },
-              { icon: DollarSign, text: "Inversión dolarizada desde USD 120K" },
+              { icon: DollarSign, text: "Inversión dolarizada desde USD 200K" },
             ].map(({ icon: Icon, text }, i) => (
               <div key={i} className="flex items-center justify-center gap-2.5 text-sm text-white/70">
                 <Icon className="h-4 w-4 text-accent flex-shrink-0" />

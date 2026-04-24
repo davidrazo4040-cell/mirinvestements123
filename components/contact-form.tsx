@@ -242,10 +242,10 @@ export function ContactForm() {
                             <SelectValue placeholder="Selecciona un rango" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="120k-250k">USD $120,000 – $250,000</SelectItem>
-                            <SelectItem value="250k-500k">USD $250,000 – $500,000</SelectItem>
+                            <SelectItem value="200k-500k">USD $200,000 – $500,000</SelectItem>
                             <SelectItem value="500k-1m">USD $500,000 – $1,000,000</SelectItem>
-                            <SelectItem value="1m+">USD $1,000,000+</SelectItem>
+                            <SelectItem value="1m-5m">USD $1,000,000 – $5,000,000</SelectItem>
+                            <SelectItem value="5m+">USD $5,000,000+</SelectItem>
                           </SelectContent>
                         </Select>
                         {errors.investmentRange && (

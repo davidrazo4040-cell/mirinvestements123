@@ -8,8 +8,8 @@ import { formatCurrency } from "@/utils/performance-math"
 
 const GEO_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json"
 
-// FIPS codes for states with MIR properties: TX=48, FL=12, AZ=04, GA=13, CA=06
-const ACTIVE_STATES = ["48", "12", "04", "13", "06"]
+// FIPS codes for states with MIR properties: CO=08, TX=48, FL=12, IL=17
+const ACTIVE_STATES = ["08", "48", "12", "17"]
 
 interface PortfolioMapProps {
   properties: Property[]
@@ -147,11 +147,11 @@ export function PortfolioMap({ properties, selectedProperty, onPropertySelect }:
           <div className="space-y-2 text-xs">
             {[
               { label: "Cap Rate", value: `${selectedProperty.capRate}%`, color: "text-accent" },
-              { label: "IRR Neto", value: `${selectedProperty.irrNet}%`, color: "text-primary" },
+              { label: "IRR Proyectado", value: `${selectedProperty.irrNet}%`, color: "text-primary" },
               {
-                label: "Ocupación",
-                value: `${selectedProperty.occupancy}%`,
-                color: "text-green-600",
+                label: selectedProperty.riskProfile === "Desarrollo" ? "Estado" : "Ocupación",
+                value: selectedProperty.riskProfile === "Desarrollo" ? "En desarrollo" : `${selectedProperty.occupancy}%`,
+                color: selectedProperty.riskProfile === "Desarrollo" ? "text-amber-600" : "text-green-600",
               },
               {
                 label: "Inversión Mínima",

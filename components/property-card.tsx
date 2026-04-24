@@ -37,6 +37,8 @@ export function PropertyCard({ property, onRequestInfo }: PropertyCardProps) {
                 ? "bg-green-500/90 text-white"
                 : property.riskProfile === "Core+"
                 ? "bg-blue-500/90 text-white"
+                : property.riskProfile === "Desarrollo"
+                ? "bg-purple-500/90 text-white"
                 : "bg-amber-500/90 text-white"
             }`}
           >
@@ -63,18 +65,24 @@ export function PropertyCard({ property, onRequestInfo }: PropertyCardProps) {
             <div className="text-lg font-bold text-accent">{formatPercent(property.capRate)}</div>
           </div>
           <div className="rounded-lg bg-primary/5 border border-primary/10 px-3 py-2">
-            <div className="text-xs text-muted-foreground mb-0.5">IRR Neto</div>
+            <div className="text-xs text-muted-foreground mb-0.5">IRR Proyectado</div>
             <div className="text-lg font-bold text-primary">{formatPercent(property.irrNet)}</div>
           </div>
           <div className="rounded-lg bg-green-50 border border-green-100 px-3 py-2">
-            <div className="text-xs text-muted-foreground mb-0.5">Ocupación</div>
-            <div className="text-lg font-bold text-green-600">
-              {formatPercent(property.occupancy, 0)}
+            <div className="text-xs text-muted-foreground mb-0.5">
+              {property.riskProfile === "Desarrollo" ? "Estado" : "Ocupación"}
+            </div>
+            <div className={`text-lg font-bold ${property.riskProfile === "Desarrollo" ? "text-amber-600 text-base" : "text-green-600"}`}>
+              {property.riskProfile === "Desarrollo" ? "En desarrollo" : formatPercent(property.occupancy, 0)}
             </div>
           </div>
           <div className="rounded-lg bg-muted border border-border/60 px-3 py-2">
-            <div className="text-xs text-muted-foreground mb-0.5">WALE</div>
-            <div className="text-lg font-bold text-foreground">{property.wale} años</div>
+            <div className="text-xs text-muted-foreground mb-0.5">
+              {property.riskProfile === "Desarrollo" ? "Entrega" : "WALE"}
+            </div>
+            <div className="text-base font-bold text-foreground">
+              {property.riskProfile === "Desarrollo" ? "2028–29" : `${property.wale} años`}
+            </div>
           </div>
         </div>
 

@@ -1,20 +1,17 @@
 export function TenantCarousel() {
   const tenants = [
-    { name: "CVS Health", color: "#CC0000" },
-    { name: "Walgreens", color: "#ED1C24" },
-    { name: "Dollar General", color: "#007DC6" },
-    { name: "Dollar Tree", color: "#00A550" },
-    { name: "Starbucks", color: "#00704A" },
-    { name: "McDonald's", color: "#FFC72C" },
-    { name: "Home Depot", color: "#F96302" },
-    { name: "Lowe's", color: "#004990" },
-    { name: "7-Eleven", color: "#008743" },
-    { name: "Bank of America", color: "#E31837" },
-    { name: "Chase Bank", color: "#117ACA" },
-    { name: "AutoZone", color: "#FF6A13" },
-    { name: "Walmart", color: "#0071CE" },
-    { name: "Target", color: "#CC0000" },
-    { name: "Chick-fil-A", color: "#E51636" },
+    { name: "Walgreens", logo: "/logos/Walgreens_2020_primary_logo.svg", color: "#E31837" },
+    { name: "Teleperformance", logo: "/logos/Teleperformance_logo.svg", color: "#0057A8" },
+    { name: "Dollar Tree", logo: "/logos/Dollar_Tree_logo.svg", color: "#00A550" },
+    { name: "O'Reilly Auto Parts", logo: "/logos/O_Reilly_Auto_Parts_Logo.svg", color: "#C8102E" },
+    { name: "Office Depot", logo: "/logos/Office-Depot-Logo.svg", color: "#CC0000" },
+    { name: "Ace Hardware", logo: "/logos/Ace_Hardware_Logo.svg", color: "#CC0000" },
+    { name: "Aaron's Inc.", logo: "/logos/Aaron_s,_Inc._logo.svg", color: "#004990" },
+    { name: "DaVita", logo: "/logos/davita-logo-svg-vector.svg", color: "#E32226" },
+    { name: "Banco Santander", logo: "/logos/Banco_Santander_Logotipo_(2007-2018).svg", color: "#EC0000" },
+    { name: "Charter Fitness", logo: null, color: "#1e40af" },
+    { name: "Chipotle", logo: null, color: "#A52A1A" },
+    { name: "Lowe's", logo: null, color: "#004990" },
   ]
 
   return (
@@ -28,7 +25,7 @@ export function TenantCarousel() {
             Tenants AAA en nuestras propiedades
           </h2>
           <p className="text-muted-foreground mt-2 text-sm">
-            Contratos NNN de largo plazo con las marcas más reconocidas de EE.UU.
+            Contratos NNN de largo plazo con corporaciones financieramente sólidas
           </p>
         </div>
       </div>
@@ -38,13 +35,26 @@ export function TenantCarousel() {
           {[...tenants, ...tenants].map((tenant, i) => (
             <div
               key={i}
-              className="flex items-center gap-3 px-6 py-4 bg-background rounded-xl border border-border/60 shadow-sm hover:shadow-md hover:border-accent/40 transition-all duration-300 whitespace-nowrap flex-shrink-0"
+              className="flex items-center gap-3 px-6 py-4 bg-background rounded-xl border border-border/60 shadow-sm hover:shadow-md hover:border-accent/40 transition-all duration-300 whitespace-nowrap flex-shrink-0 min-w-[160px]"
             >
-              <div
-                className="w-3 h-3 rounded-full flex-shrink-0"
-                style={{ backgroundColor: tenant.color }}
-              />
-              <span className="text-sm font-semibold text-foreground">{tenant.name}</span>
+              {tenant.logo ? (
+                <div className="w-24 h-8 flex items-center justify-center flex-shrink-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={tenant.logo}
+                    alt={tenant.name}
+                    className="max-h-8 max-w-[96px] object-contain"
+                  />
+                </div>
+              ) : (
+                <>
+                  <div
+                    className="w-3 h-3 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: tenant.color }}
+                  />
+                  <span className="text-sm font-semibold text-foreground">{tenant.name}</span>
+                </>
+              )}
             </div>
           ))}
         </div>

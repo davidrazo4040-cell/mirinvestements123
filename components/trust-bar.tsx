@@ -42,16 +42,16 @@ export function TrustBar() {
   }, [])
 
   const stats = [
-    { icon: Building2, value: 15, suffix: "+", label: "Propiedades", description: "Activos comerciales AAA" },
+    { icon: Building2, value: 5, suffix: "", label: "Propiedades Activas", description: "Portafolio actual en EE.UU." },
     { icon: Users, value: 200, suffix: "+", label: "Inversionistas", description: "Confiando en MIR" },
-    { icon: TrendingUp, value: 85, suffix: "M+", label: "AUM USD", description: "Activos bajo administración" },
-    { icon: Award, value: 8, suffix: "+", label: "Años", description: "De experiencia" },
+    { icon: TrendingUp, value: 129, suffix: "%", label: "Retorno Acumulado", description: "Track record 2015–2025" },
+    { icon: Award, value: 10, suffix: "+", label: "Años", description: "De experiencia comprobada" },
   ]
 
-  const count0 = useCountUp(15, 1500, isVisible)
+  const count0 = useCountUp(5, 800, isVisible)
   const count1 = useCountUp(200, 2000, isVisible)
-  const count2 = useCountUp(85, 1800, isVisible)
-  const count3 = useCountUp(8, 1200, isVisible)
+  const count2 = useCountUp(129, 2000, isVisible)
+  const count3 = useCountUp(10, 1200, isVisible)
   const counts = [count0, count1, count2, count3]
 
   return (

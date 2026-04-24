@@ -11,10 +11,10 @@ interface PortfolioFiltersProps {
 }
 
 export function PortfolioFilters({ filters, onFilterChange, onReset }: PortfolioFiltersProps) {
-  const propertyTypes = ["Oficinas", "Retail", "Industrial"]
-  const states = ["TX", "FL", "AZ", "GA", "CA"]
-  const riskProfiles = ["Core", "Core+", "Value-Add"]
-  const leaseTypes = ["NNN", "Modified Gross", "Full Service"]
+  const propertyTypes = ["Retail", "Oficinas", "Multifamily", "Industrial"]
+  const states = ["CO", "TX", "FL", "IL"]
+  const riskProfiles = ["Core", "Core+", "Desarrollo"]
+  const leaseTypes = ["NNN", "BTR"]
 
   const handleTypeChange = (type: string, checked: boolean) => {
     const newTypes = checked ? [...filters.type, type] : filters.type.filter((t) => t !== type)
@@ -113,9 +113,9 @@ export function PortfolioFilters({ filters, onFilterChange, onReset }: Portfolio
           {formatCurrency(filters.minInvestment)} – {formatCurrency(filters.maxInvestment)}
         </p>
         <Slider
-          min={100000}
-          max={500000}
-          step={10000}
+          min={200000}
+          max={10000000}
+          step={100000}
           value={[filters.minInvestment, filters.maxInvestment]}
           onValueChange={([min, max]) => onFilterChange({ ...filters, minInvestment: min, maxInvestment: max })}
         />

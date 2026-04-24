@@ -1,7 +1,7 @@
 export interface Property {
   id: string
   name: string
-  type: "Oficinas" | "Retail" | "Industrial"
+  type: "Retail" | "Oficinas" | "Industrial" | "Multifamily" | "Data Center"
   city: string
   state: string
   country: string
@@ -19,10 +19,14 @@ export interface Property {
   leaseDuration: number
   minInvestment: number
   totalValue: number
-  riskProfile: "Core" | "Core+" | "Value-Add"
+  riskProfile: "Core" | "Core+" | "Value-Add" | "Desarrollo"
   yearBuilt: number
   sqft: number
   tenants: string[]
+  address?: string
+  noi?: number
+  allocationPct?: number
+  leaseEnd?: string
 }
 
 export interface FilterState {
