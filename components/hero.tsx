@@ -22,8 +22,8 @@ export function Hero() {
         aria-hidden="true"
       />
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/85 via-primary/70 to-primary/50" />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/85 to-primary/70" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-transparent" />
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
@@ -36,14 +36,14 @@ export function Hero() {
           </div>
 
           {/* Heading */}
-          <h1 className="animate-fade-in-up delay-100 font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white leading-[1.05] mb-6">
+          <h1 className="animate-fade-in-up delay-100 font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white leading-[1.05] mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
             Inmuebles comerciales{" "}
             <span className="text-accent italic">AAA</span>{" "}
             en EE.UU.
           </h1>
 
           {/* Subheading */}
-          <p className="animate-fade-in-up delay-200 text-lg sm:text-xl text-white/75 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="animate-fade-in-up delay-200 text-lg sm:text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
             Acceso institucional, rendimientos históricos comprobados, transparencia total.
             Inversión dolarizada desde USD 120,000.
           </p>
