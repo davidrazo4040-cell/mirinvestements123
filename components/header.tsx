@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Menu, X } from "lucide-react"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -32,13 +34,16 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/97 backdrop-blur-sm border-b border-foreground/10"
+          ? "bg-background/95 backdrop-blur-md border-b border-border/60 shadow-sm"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex-shrink-0"
+          >
             <Image
               src="https://static.wixstatic.com/media/be9379_b8d95d2742e24da59f06520fe51dc343~mv2.png/v1/fill/w_142,h_180,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Mir.png"
               alt="MIR Investments"
@@ -50,55 +55,62 @@ export function Header() {
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden md:flex items-center gap-8">
             {navItems.map(({ label, id }) => (
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className="text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-foreground transition-colors duration-200"
+                className={`text-sm font-medium transition-colors duration-200 ${
+                  isScrolled
+                    ? "text-foreground/70 hover:text-foreground"
+                    : "text-white/80 hover:text-white"
+                }`}
               >
                 {label}
               </button>
             ))}
-            <button
+            <Button
               onClick={() => scrollToSection("contacto")}
-              className="text-xs tracking-[0.2em] uppercase border-b border-foreground pb-0.5 hover:text-accent hover:border-accent transition-colors duration-200 ml-2"
+              size="sm"
+              className="ml-2 bg-accent hover:bg-accent/90 text-accent-foreground shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 font-semibold"
             >
-              Solicitar Información
-            </button>
+              Solicita Información
+            </Button>
           </nav>
 
           {/* Mobile toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden flex flex-col gap-1.5 p-2"
+            className={`md:hidden p-2 rounded-lg transition-colors ${
+              isScrolled ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/10"
+            }`}
             aria-label="Toggle menu"
           >
-            <span className={`block w-5 h-px bg-foreground transition-all duration-200 ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block w-5 h-px bg-foreground transition-all duration-200 ${isMobileMenuOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-5 h-px bg-foreground transition-all duration-200 ${isMobileMenuOpen ? "-rotate-45 -translate-y-2.5" : ""}`} />
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden py-6 border-t border-foreground/10">
-            <div className="flex flex-col gap-5">
+          <nav className="md:hidden py-4 border-t border-border/60 bg-background/95 backdrop-blur-md">
+            <div className="flex flex-col gap-1">
               {navItems.map(({ label, id }) => (
                 <button
                   key={id}
                   onClick={() => scrollToSection(id)}
-                  className="text-left text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-foreground transition-colors"
+                  className="text-left px-4 py-3 text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-muted/60 rounded-lg transition-colors"
                 >
                   {label}
                 </button>
               ))}
-              <button
-                onClick={() => scrollToSection("contacto")}
-                className="text-left text-xs tracking-[0.2em] uppercase border-b border-foreground pb-0.5 w-fit hover:text-accent hover:border-accent transition-colors"
-              >
-                Solicitar Información
-              </button>
+              <div className="px-4 pt-3 pb-2">
+                <Button
+                  onClick={() => scrollToSection("contacto")}
+                  className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+                >
+                  Solicita Información
+                </Button>
+              </div>
             </div>
           </nav>
         )}

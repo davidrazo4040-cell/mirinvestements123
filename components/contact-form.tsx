@@ -2,8 +2,20 @@
 
 import type React from "react"
 import { useState } from "react"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { CheckCircle2, Mail, Phone, MessageSquare } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button"
+import { Textarea } from "@/components/ui/textarea"
+import { Checkbox } from "@/components/ui/checkbox"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { CheckCircle2, Mail, Phone, MessageSquare, Clock } from "lucide-react"
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -62,185 +74,247 @@ export function ContactForm() {
     }, 5000)
   }
 
-  const inputClass = (field: string) =>
-    `w-full bg-transparent border-0 border-b py-2 px-0 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-0 transition-colors duration-200 ${
-      errors[field]
-        ? "border-destructive focus:border-destructive"
-        : "border-foreground/20 focus:border-foreground"
-    }`
-
   const contactItems = [
-    { Icon: Mail, label: "Email", value: "info@mirinvestments.com", href: "mailto:info@mirinvestments.com" },
-    { Icon: Phone, label: "Teléfono", value: "+52 (55) 5555-5555", href: "tel:+525555555555" },
-    { Icon: MessageSquare, label: "WhatsApp", value: "+52 (55) 5555-5555", href: "https://wa.me/525555555555" },
+    {
+      Icon: Mail,
+      label: "Email",
+      value: "info@mirinvestments.com",
+      href: "mailto:info@mirinvestments.com",
+    },
+    {
+      Icon: Phone,
+      label: "Teléfono",
+      value: "+52 (55) 5555-5555",
+      href: "tel:+525555555555",
+    },
+    {
+      Icon: MessageSquare,
+      label: "WhatsApp",
+      value: "+52 (55) 5555-5555",
+      href: "https://wa.me/525555555555",
+    },
   ]
 
   return (
-    <section id="contacto" className="py-24 bg-muted/20 border-b border-foreground/10">
+    <section id="contacto" className="py-24 bg-muted/20 border-b border-border/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">Contacto</p>
-          <h2 className="font-serif text-4xl md:text-5xl font-light text-foreground">
-            Solicita <em className="italic">información</em>
+          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">
+            Contacto
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Solicita <span className="text-accent">información</span>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-xl leading-relaxed">
+          <p className="text-muted-foreground max-w-xl leading-relaxed">
             Completa el formulario y un asesor se pondrá en contacto contigo en menos de 24 horas
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-16 max-w-6xl">
+        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl">
           {/* Contact Info */}
-          <div className="space-y-0">
-            {contactItems.map(({ Icon, label, value, href }, i) => (
-              <div key={label} className={`flex items-start gap-5 py-7 ${i > 0 ? "border-t border-foreground/10" : ""}`}>
-                <Icon className="h-4 w-4 text-accent mt-0.5 flex-shrink-0" />
-                <div>
-                  <div className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">{label}</div>
-                  <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
-                    className="text-sm text-foreground hover:text-accent transition-colors duration-200">
-                    {value}
-                  </a>
-                </div>
-              </div>
+          <div className="space-y-4">
+            {contactItems.map(({ Icon, label, value, href }) => (
+              <Card key={label} className="border-border/60 hover:border-accent/40 hover:shadow-md transition-all duration-300">
+                <CardContent className="p-5 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0">
+                    <Icon className="h-4 w-4 text-accent" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
+                      {label}
+                    </div>
+                    <a
+                      href={href}
+                      target={href.startsWith("http") ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      className="text-sm text-foreground hover:text-accent transition-colors duration-200 font-medium"
+                    >
+                      {value}
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
 
-            <div className="border-t border-foreground/10 pt-7">
-              <div className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3">Horario de Atención</div>
-              <p className="text-sm text-foreground">Lunes a Viernes</p>
-              <p className="text-sm text-muted-foreground">9:00 AM – 6:00 PM (CDMX)</p>
-            </div>
+            <Card className="border-border/60">
+              <CardContent className="p-5 flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0">
+                  <Clock className="h-4 w-4 text-accent" />
+                </div>
+                <div>
+                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
+                    Horario de Atención
+                  </div>
+                  <p className="text-sm text-foreground font-medium">Lunes a Viernes</p>
+                  <p className="text-sm text-muted-foreground">9:00 AM – 6:00 PM (CDMX)</p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Form */}
           <div className="lg:col-span-2">
-            {isSuccess ? (
-              <div className="flex flex-col items-center justify-center py-20 border border-foreground/10 text-center">
-                <CheckCircle2 className="h-10 w-10 text-accent mb-6" />
-                <h3 className="font-serif text-2xl font-light text-foreground mb-3">Solicitud recibida</h3>
-                <p className="text-sm text-muted-foreground max-w-xs">
-                  Gracias por tu interés. Un asesor se pondrá en contacto contigo pronto.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid sm:grid-cols-2 gap-8">
-                  {/* Name */}
-                  <div>
-                    <label className="text-xs tracking-[0.2em] uppercase text-muted-foreground block mb-2">
-                      Nombre Completo *
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Juan Pérez"
-                      className={inputClass("name")}
-                    />
-                    {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
+            <Card className="border-border/60 shadow-lg">
+              <CardContent className="p-8">
+                {isSuccess ? (
+                  <div className="flex flex-col items-center justify-center py-16 text-center">
+                    <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-6">
+                      <CheckCircle2 className="h-8 w-8 text-green-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground mb-3">Solicitud recibida</h3>
+                    <p className="text-sm text-muted-foreground max-w-xs">
+                      Gracias por tu interés. Un asesor se pondrá en contacto contigo pronto.
+                    </p>
                   </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      {/* Name */}
+                      <div className="space-y-2">
+                        <Label htmlFor="name" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                          Nombre Completo *
+                        </Label>
+                        <Input
+                          id="name"
+                          type="text"
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          placeholder="Juan Pérez"
+                          className={errors.name ? "border-destructive" : ""}
+                        />
+                        {errors.name && (
+                          <p className="text-xs text-destructive">{errors.name}</p>
+                        )}
+                      </div>
 
-                  {/* Email */}
-                  <div>
-                    <label className="text-xs tracking-[0.2em] uppercase text-muted-foreground block mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="juan@ejemplo.com"
-                      className={inputClass("email")}
-                    />
-                    {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
-                  </div>
-                </div>
+                      {/* Email */}
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                          Email *
+                        </Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          placeholder="juan@ejemplo.com"
+                          className={errors.email ? "border-destructive" : ""}
+                        />
+                        {errors.email && (
+                          <p className="text-xs text-destructive">{errors.email}</p>
+                        )}
+                      </div>
+                    </div>
 
-                <div className="grid sm:grid-cols-2 gap-8">
-                  {/* Phone */}
-                  <div>
-                    <label className="text-xs tracking-[0.2em] uppercase text-muted-foreground block mb-2">
-                      Teléfono *
-                    </label>
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="+52 55 1234 5678"
-                      className={inputClass("phone")}
-                    />
-                    {errors.phone && <p className="text-xs text-destructive mt-1">{errors.phone}</p>}
-                  </div>
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      {/* Phone */}
+                      <div className="space-y-2">
+                        <Label htmlFor="phone" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                          Teléfono *
+                        </Label>
+                        <Input
+                          id="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          placeholder="+52 55 1234 5678"
+                          className={errors.phone ? "border-destructive" : ""}
+                        />
+                        {errors.phone && (
+                          <p className="text-xs text-destructive">{errors.phone}</p>
+                        )}
+                      </div>
 
-                  {/* Investment Range */}
-                  <div>
-                    <label className="text-xs tracking-[0.2em] uppercase text-muted-foreground block mb-2">
-                      Rango de Inversión *
-                    </label>
-                    <Select
-                      value={formData.investmentRange}
-                      onValueChange={(value) => setFormData({ ...formData, investmentRange: value })}
+                      {/* Investment Range */}
+                      <div className="space-y-2">
+                        <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                          Rango de Inversión *
+                        </Label>
+                        <Select
+                          value={formData.investmentRange}
+                          onValueChange={(value) =>
+                            setFormData({ ...formData, investmentRange: value })
+                          }
+                        >
+                          <SelectTrigger
+                            className={errors.investmentRange ? "border-destructive" : ""}
+                          >
+                            <SelectValue placeholder="Selecciona un rango" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="120k-250k">USD $120,000 – $250,000</SelectItem>
+                            <SelectItem value="250k-500k">USD $250,000 – $500,000</SelectItem>
+                            <SelectItem value="500k-1m">USD $500,000 – $1,000,000</SelectItem>
+                            <SelectItem value="1m+">USD $1,000,000+</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        {errors.investmentRange && (
+                          <p className="text-xs text-destructive">{errors.investmentRange}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Message */}
+                    <div className="space-y-2">
+                      <Label htmlFor="message" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                        Mensaje (Opcional)
+                      </Label>
+                      <Textarea
+                        id="message"
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        placeholder="Cuéntanos sobre tus objetivos de inversión..."
+                        rows={4}
+                        className="resize-none"
+                      />
+                    </div>
+
+                    {/* Consent */}
+                    <div className="flex items-start gap-3">
+                      <Checkbox
+                        id="consent"
+                        checked={formData.consent}
+                        onCheckedChange={(checked) =>
+                          setFormData({ ...formData, consent: checked as boolean })
+                        }
+                        className="mt-0.5"
+                      />
+                      <label
+                        htmlFor="consent"
+                        className="text-xs text-muted-foreground leading-relaxed cursor-pointer"
+                      >
+                        Acepto la{" "}
+                        <a
+                          href="/privacidad"
+                          className="text-foreground underline hover:text-accent transition-colors"
+                        >
+                          política de privacidad
+                        </a>{" "}
+                        y autorizo el uso de mis datos para contacto. *
+                      </label>
+                    </div>
+                    {errors.consent && (
+                      <p className="text-xs text-destructive -mt-2">{errors.consent}</p>
+                    )}
+
+                    {/* Submit */}
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      size="lg"
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 font-semibold"
                     >
-                      <SelectTrigger className={`border-0 border-b rounded-none bg-transparent px-0 h-auto py-2 text-sm focus:ring-0 ${errors.investmentRange ? "border-destructive" : "border-foreground/20"}`}>
-                        <SelectValue placeholder="Selecciona un rango" />
-                      </SelectTrigger>
-                      <SelectContent className="rounded-none">
-                        <SelectItem value="120k-250k">USD $120,000 – $250,000</SelectItem>
-                        <SelectItem value="250k-500k">USD $250,000 – $500,000</SelectItem>
-                        <SelectItem value="500k-1m">USD $500,000 – $1,000,000</SelectItem>
-                        <SelectItem value="1m+">USD $1,000,000+</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    {errors.investmentRange && <p className="text-xs text-destructive mt-1">{errors.investmentRange}</p>}
-                  </div>
-                </div>
+                      {isSubmitting ? "Enviando..." : "Solicitar Información →"}
+                    </Button>
 
-                {/* Message */}
-                <div>
-                  <label className="text-xs tracking-[0.2em] uppercase text-muted-foreground block mb-2">
-                    Mensaje (Opcional)
-                  </label>
-                  <textarea
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Cuéntanos sobre tus objetivos de inversión..."
-                    rows={4}
-                    className="w-full bg-transparent border-b border-foreground/20 py-2 px-0 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-0 focus:border-foreground transition-colors duration-200 resize-none"
-                  />
-                </div>
-
-                {/* Consent */}
-                <div className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    id="consent"
-                    checked={formData.consent}
-                    onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
-                    className="mt-0.5 w-3.5 h-3.5 border border-foreground/30 bg-transparent accent-accent cursor-pointer"
-                  />
-                  <label htmlFor="consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
-                    Acepto la{" "}
-                    <a href="/privacidad" className="text-foreground underline hover:text-accent transition-colors">
-                      política de privacidad
-                    </a>{" "}
-                    y autorizo el uso de mis datos para contacto. *
-                  </label>
-                </div>
-                {errors.consent && <p className="text-xs text-destructive -mt-4">{errors.consent}</p>}
-
-                {/* Submit */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="text-sm tracking-[0.2em] uppercase border-b border-foreground pb-1 hover:text-accent hover:border-accent transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? "Enviando..." : "Solicitar Información →"}
-                </button>
-
-                <p className="text-xs text-muted-foreground">
-                  Un asesor de MIR Investments se pondrá en contacto para discutir oportunidades de inversión.
-                </p>
-              </form>
-            )}
+                    <p className="text-xs text-muted-foreground text-center">
+                      Un asesor de MIR Investments se pondrá en contacto para discutir oportunidades
+                      de inversión.
+                    </p>
+                  </form>
+                )}
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>

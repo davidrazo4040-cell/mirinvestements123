@@ -4,45 +4,42 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Design A — Minimalist Luxury */
-  /* Chalk White #F9F8F6 · Midnight Navy #0D1B2A · Antique Gold #B8953F */
+  /* Dynamic Design — Navy + Gold */
+  --background: 0 0% 99%;
+  --foreground: 222.2 84% 4.9%;
 
-  --background: 44 19% 97%;
-  --foreground: 211 53% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
 
-  --card: 44 19% 97%;
-  --card-foreground: 211 53% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
 
-  --popover: 44 19% 97%;
-  --popover-foreground: 211 53% 11%;
+  --primary: 222 47% 11%;
+  --primary-foreground: 210 40% 98%;
 
-  --primary: 211 53% 11%;
-  --primary-foreground: 44 19% 97%;
+  --accent: 43 96% 56%;
+  --accent-foreground: 222 47% 11%;
 
-  --accent: 43 49% 48%;
-  --accent-foreground: 211 53% 11%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
 
-  --secondary: 44 10% 93%;
-  --secondary-foreground: 211 30% 25%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
 
-  --muted: 44 10% 93%;
-  --muted-foreground: 211 20% 45%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
 
-  --destructive: 0 70% 50%;
-  --destructive-foreground: 44 19% 97%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222 47% 11%;
 
-  --border: 211 15% 85%;
-  --input: 211 15% 85%;
-  --ring: 211 53% 11%;
-
-  --chart-1: 211 53% 11%;
-  --chart-2: 43 49% 48%;
+  --chart-1: 222 47% 11%;
+  --chart-2: 43 96% 56%;
   --chart-3: 197 37% 24%;
   --chart-4: 142 76% 36%;
   --chart-5: 262 52% 47%;
 
-  /* No border radius — Design A is sharp edges */
-  --radius: 0rem;
+  --radius: 0.5rem;
 }
 
 @theme inline {
@@ -70,10 +67,10 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: 0rem;
-  --radius-md: 0rem;
-  --radius-lg: 0rem;
-  --radius-xl: 0rem;
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
   --font-sans: var(--font-inter);
   --font-serif: var(--font-cormorant);
 }
@@ -93,7 +90,7 @@
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -106,13 +103,35 @@
   to { opacity: 1; }
 }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
 @layer utilities {
   .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out both;
+    animation: fade-in-up 0.7s ease-out both;
   }
   .animate-fade-in {
-    animation: fade-in 0.6s ease-out both;
+    animation: fade-in 0.5s ease-out both;
   }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+  .animate-marquee-pause:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
   .delay-300 { animation-delay: 300ms; }
@@ -120,24 +139,27 @@
   .delay-500 { animation-delay: 500ms; }
   .delay-600 { animation-delay: 600ms; }
 
-  /* Underline-only input style for Design A */
-  .input-underline {
-    @apply border-0 border-b border-foreground/25 rounded-none bg-transparent px-0 py-2 focus-visible:ring-0 focus-visible:outline-none focus-visible:border-foreground transition-colors duration-200 placeholder:text-muted-foreground/60;
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(222 47% 11%), hsl(43 96% 56%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: hsl(211 53% 11% / 0.15);
+  background: hsl(222 47% 11% / 0.2);
+  border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(211 53% 11% / 0.3);
+  background: hsl(222 47% 11% / 0.35);
 }
 
 /* Text selection */
 ::selection {
-  background: hsl(43 49% 48% / 0.2);
-  color: hsl(211 53% 11%);
+  background: hsl(43 96% 56% / 0.25);
+  color: hsl(222 47% 11%);
 }

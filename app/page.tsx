@@ -1,7 +1,7 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { TrustBar } from "@/components/trust-bar"
-import { Testimonials } from "@/components/testimonials"
+import { TenantCarousel } from "@/components/tenant-carousel"
 import { SecurityBadges } from "@/components/security-badges"
 import { PortfolioSection } from "@/components/portfolio-section"
 import { HowItWorks } from "@/components/how-it-works"
@@ -19,7 +19,7 @@ export default function Home() {
       <main>
         <Hero />
         <TrustBar />
-        <Testimonials />
+        <TenantCarousel />
         <SecurityBadges />
         <PortfolioSection />
         <HowItWorks />

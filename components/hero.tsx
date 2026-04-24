@@ -1,77 +1,96 @@
 "use client"
 
+import { Button } from "@/components/ui/button"
+import { CheckCircle2, Shield, DollarSign, ChevronDown } from "lucide-react"
+
 export function Hero() {
   const scrollToContact = () => {
-    const element = document.getElementById("contacto")
-    if (element) element.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })
   }
-
   const scrollToPortfolio = () => {
-    const element = document.getElementById("portafolio")
-    if (element) element.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("portafolio")?.scrollIntoView({ behavior: "smooth" })
   }
-
-  const stats = [
-    { value: "$85M+", label: "Activos bajo administración", sub: "AUM en propiedades comerciales" },
-    { value: "15+", label: "Propiedades activas", sub: "Activos comerciales AAA en EE.UU." },
-    { value: "200+", label: "Inversionistas", sub: "Confiando en MIR Investments" },
-    { value: "8+", label: "Años de experiencia", sub: "Operando en mercados de EE.UU." },
-  ]
 
   return (
-    <section className="relative min-h-screen flex items-center bg-background border-b border-foreground/10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-20 lg:gap-32 items-center">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background image */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover"
+        aria-hidden="true"
+      />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/85 via-primary/70 to-primary/50" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent" />
 
-          {/* Left — Typography */}
-          <div>
-            <p className="animate-fade-in text-xs tracking-[0.35em] uppercase text-accent mb-8 font-medium">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Badge */}
+          <div className="animate-fade-in inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/40 bg-accent/10 backdrop-blur-sm mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            <span className="text-xs tracking-[0.25em] uppercase text-accent font-medium">
               Inversión Institucional Accesible
-            </p>
-
-            <h1 className="animate-fade-in-up delay-100 font-serif text-5xl sm:text-6xl md:text-[4.5rem] lg:text-[5.5rem] font-light leading-[1.05] text-foreground mb-8">
-              Inmuebles<br />
-              Comerciales{" "}
-              <em className="italic text-accent">AAA</em>
-              <br />en Estados<br />
-              Unidos
-            </h1>
-
-            <p className="animate-fade-in-up delay-200 text-base md:text-lg text-muted-foreground leading-relaxed mb-12 max-w-sm">
-              Acceso institucional a bienes raíces comerciales con rendimientos históricos, transparencia total e inversión dolarizada desde USD 120,000.
-            </p>
-
-            <div className="animate-fade-in-up delay-300 flex flex-wrap gap-8">
-              <button
-                onClick={scrollToContact}
-                className="text-sm tracking-[0.2em] uppercase border-b border-foreground pb-1 hover:text-accent hover:border-accent transition-colors duration-300"
-              >
-                Solicitar Información
-              </button>
-              <button
-                onClick={scrollToPortfolio}
-                className="text-sm tracking-[0.2em] uppercase text-muted-foreground border-b border-muted-foreground/40 pb-1 hover:text-foreground hover:border-foreground transition-colors duration-300"
-              >
-                Ver Portafolio
-              </button>
-            </div>
+            </span>
           </div>
 
-          {/* Right — Stats */}
-          <div className="border-l border-foreground/12 pl-10 md:pl-14 animate-fade-in-up delay-200">
-            {stats.map((stat, i) => (
-              <div key={i} className={`py-7 ${i > 0 ? "border-t border-foreground/10" : ""}`}>
-                <div className="font-serif text-4xl md:text-5xl font-light text-foreground mb-1 leading-none">
-                  {stat.value}
-                </div>
-                <div className="text-sm font-medium text-foreground/80 mb-1">{stat.label}</div>
-                <div className="text-xs text-muted-foreground tracking-wide">{stat.sub}</div>
+          {/* Heading */}
+          <h1 className="animate-fade-in-up delay-100 font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white leading-[1.05] mb-6">
+            Inmuebles comerciales{" "}
+            <span className="text-accent italic">AAA</span>{" "}
+            en EE.UU.
+          </h1>
+
+          {/* Subheading */}
+          <p className="animate-fade-in-up delay-200 text-lg sm:text-xl text-white/75 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Acceso institucional, rendimientos históricos comprobados, transparencia total.
+            Inversión dolarizada desde USD 120,000.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="animate-fade-in-up delay-300 flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <Button
+              onClick={scrollToContact}
+              size="lg"
+              className="text-base px-8 py-6 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-xl shadow-accent/20 hover:shadow-2xl hover:shadow-accent/30 hover:-translate-y-0.5 transition-all duration-200 font-semibold"
+            >
+              Solicita Información
+            </Button>
+            <Button
+              onClick={scrollToPortfolio}
+              variant="outline"
+              size="lg"
+              className="text-base px-8 py-6 h-auto bg-transparent border-white/40 text-white hover:bg-white/10 hover:border-white hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Ver Portafolio
+            </Button>
+          </div>
+
+          {/* Trust signals */}
+          <div className="animate-fade-in-up delay-400 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+            {[
+              { icon: CheckCircle2, text: "Propiedades existentes y rentadas" },
+              { icon: Shield, text: "Due diligence externo certificado" },
+              { icon: DollarSign, text: "Inversión dolarizada desde USD 120K" },
+            ].map(({ icon: Icon, text }, i) => (
+              <div key={i} className="flex items-center justify-center gap-2.5 text-sm text-white/70">
+                <Icon className="h-4 w-4 text-accent flex-shrink-0" />
+                <span className="text-left">{text}</span>
               </div>
             ))}
           </div>
-
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <button
+        onClick={scrollToPortfolio}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 hover:text-white transition-colors animate-bounce"
+        aria-label="Scroll down"
+      >
+        <ChevronDown className="h-8 w-8" />
+      </button>
     </section>
   )
 }
