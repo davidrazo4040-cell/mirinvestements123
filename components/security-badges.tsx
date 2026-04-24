@@ -25,16 +25,20 @@ export function SecurityBadges() {
   ]
 
   return (
-    <section className="py-12 border-y border-border bg-muted/20">
+    <section className="py-10 border-y border-border/60 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="flex flex-wrap justify-center gap-x-10 gap-y-6 md:gap-x-16">
           {badges.map((badge, index) => {
             const Icon = badge.icon
             return (
-              <div key={index} className="flex flex-col items-center text-center gap-2">
-                <Icon className="h-8 w-8 text-accent" />
-                <div className="text-sm font-semibold text-foreground">{badge.title}</div>
-                <div className="text-xs text-muted-foreground">{badge.description}</div>
+              <div key={index} className="flex items-center gap-3 group">
+                <div className="w-9 h-9 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors duration-300">
+                  <Icon className="h-4 w-4 text-accent" />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-foreground leading-tight">{badge.title}</div>
+                  <div className="text-xs text-muted-foreground">{badge.description}</div>
+                </div>
               </div>
             )
           })}

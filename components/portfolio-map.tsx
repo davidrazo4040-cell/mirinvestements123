@@ -9,84 +9,111 @@ interface PortfolioMapProps {
   onPropertySelect: (property: Property) => void
 }
 
+const PROPERTY_POSITIONS: Record<string, { top: string; left: string }> = {
+  "prop-001": { top: "67%", left: "36%" },  // Austin, TX
+  "prop-002": { top: "77%", left: "74%" },  // Miami, FL
+  "prop-003": { top: "61%", left: "43%" },  // Dallas, TX
+  "prop-004": { top: "57%", left: "17%" },  // Phoenix, AZ
+  "prop-005": { top: "64%", left: "67%" },  // Atlanta, GA
+  "prop-006": { top: "44%", left: "7%" },   // San Jose, CA
+}
+
+const STATE_LABELS = [
+  { label: "CA", top: "44%", left: "9%" },
+  { label: "AZ", top: "57%", left: "19%" },
+  { label: "TX", top: "65%", left: "42%" },
+  { label: "GA", top: "63%", left: "70%" },
+  { label: "FL", top: "76%", left: "76%" },
+]
+
 export function PortfolioMap({ properties, selectedProperty, onPropertySelect }: PortfolioMapProps) {
   const mapRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    // Simple map visualization using CSS
-    // In production, integrate with Google Maps or Mapbox
-  }, [properties, selectedProperty])
+  useEffect(() => {}, [properties, selectedProperty])
 
   return (
-    <div ref={mapRef} className="relative w-full h-[400px] bg-muted rounded-lg overflow-hidden border border-border">
-      {/* Simplified US Map Visualization */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative w-full h-full max-w-4xl mx-auto p-8">
-          {/* Map Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
+    <div ref={mapRef} className="relative w-full h-[420px] bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl overflow-hidden border border-border/60">
+      {/* Subtle grid */}
+      <div
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(222 47% 11%) 1px, transparent 1px), linear-gradient(90deg, hsl(222 47% 11%) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
 
-          {/* Property Markers */}
-          {properties.map((property) => {
-            // Simplified positioning based on state
-            const positions: Record<string, { top: string; left: string }> = {
-              TX: { top: "60%", left: "40%" },
-              FL: { top: "70%", left: "75%" },
-              AZ: { top: "55%", left: "20%" },
-              GA: { top: "60%", left: "70%" },
-              CA: { top: "40%", left: "10%" },
-            }
+      <div className="absolute inset-0 p-6">
+        {/* State labels */}
+        {STATE_LABELS.map((s) => (
+          <div
+            key={s.label}
+            className="absolute text-xs font-bold text-muted-foreground/40 select-none"
+            style={{ top: s.top, left: s.left }}
+          >
+            {s.label}
+          </div>
+        ))}
 
-            const position = positions[property.state] || { top: "50%", left: "50%" }
-            const isSelected = selectedProperty?.id === property.id
+        {/* Property markers */}
+        {properties.map((property) => {
+          const position = PROPERTY_POSITIONS[property.id] ?? { top: "50%", left: "50%" }
+          const isSelected = selectedProperty?.id === property.id
 
-            return (
-              <button
-                key={property.id}
-                onClick={() => onPropertySelect(property)}
-                className={`absolute w-8 h-8 rounded-full transition-all transform hover:scale-125 ${
-                  isSelected ? "bg-accent ring-4 ring-accent/30 scale-125" : "bg-primary hover:bg-primary/80"
-                }`}
-                style={{
-                  top: position.top,
-                  left: position.left,
-                  transform: "translate(-50%, -50%)",
-                }}
-                title={property.name}
-              >
-                <span className="sr-only">{property.name}</span>
-              </button>
-            )
-          })}
+          return (
+            <button
+              key={property.id}
+              onClick={() => onPropertySelect(property)}
+              className={`absolute flex items-center justify-center transition-all duration-200 ${
+                isSelected
+                  ? "w-9 h-9 bg-accent ring-4 ring-accent/30 scale-125 shadow-lg shadow-accent/30"
+                  : "w-7 h-7 bg-primary hover:bg-accent hover:scale-125 hover:shadow-md"
+              } rounded-full`}
+              style={{
+                top: position.top,
+                left: position.left,
+                transform: `translate(-50%, -50%) ${isSelected ? "scale(1.25)" : ""}`,
+              }}
+              title={property.name}
+              aria-label={property.name}
+            >
+              <span className="w-2 h-2 rounded-full bg-white/80" />
+            </button>
+          )
+        })}
 
-          {/* Legend */}
-          <div className="absolute bottom-4 left-4 bg-background/95 backdrop-blur-sm rounded-lg p-3 shadow-lg">
-            <div className="text-xs font-semibold mb-2">Ubicaciones</div>
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <div className="w-3 h-3 rounded-full bg-primary" />
-              <span>{properties.length} propiedades</span>
+        {/* Legend */}
+        <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-md border border-border/50">
+          <div className="text-xs font-semibold text-foreground mb-1.5">Propiedades</div>
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <div className="w-3 h-3 rounded-full bg-primary" />
+            <span>{properties.length} activos</span>
+          </div>
+        </div>
+
+        {/* Selected info panel */}
+        {selectedProperty && (
+          <div className="absolute top-4 right-4 bg-background/95 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg border border-border/60 max-w-[200px]">
+            <div className="font-semibold text-sm mb-0.5 leading-tight">{selectedProperty.name}</div>
+            <div className="text-xs text-muted-foreground mb-2">
+              {selectedProperty.city}, {selectedProperty.state}
+            </div>
+            <div className="space-y-1 text-xs">
+              <div className="flex justify-between gap-4">
+                <span className="text-muted-foreground">Cap Rate</span>
+                <span className="font-bold text-accent">{selectedProperty.capRate}%</span>
+              </div>
+              <div className="flex justify-between gap-4">
+                <span className="text-muted-foreground">Ocupación</span>
+                <span className="font-bold text-green-600">{selectedProperty.occupancy}%</span>
+              </div>
+              <div className="flex justify-between gap-4">
+                <span className="text-muted-foreground">IRR Neto</span>
+                <span className="font-bold text-primary">{selectedProperty.irrNet}%</span>
+              </div>
             </div>
           </div>
-
-          {/* Selected Property Info */}
-          {selectedProperty && (
-            <div className="absolute top-4 right-4 bg-background/95 backdrop-blur-sm rounded-lg p-4 shadow-lg max-w-xs">
-              <div className="font-semibold text-sm mb-1">{selectedProperty.name}</div>
-              <div className="text-xs text-muted-foreground mb-2">
-                {selectedProperty.city}, {selectedProperty.state}
-              </div>
-              <div className="text-xs space-y-1">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Cap Rate:</span>
-                  <span className="font-semibold">{selectedProperty.capRate}%</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Ocupación:</span>
-                  <span className="font-semibold">{selectedProperty.occupancy}%</span>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
+        )}
       </div>
     </div>
   )

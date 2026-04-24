@@ -1,15 +1,13 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Star } from "lucide-react"
-import { useState, useEffect } from "react"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Star, Quote } from "lucide-react"
 
 const testimonials = [
   {
     name: "Carlos Mendoza",
     location: "Ciudad de México, MX",
-    avatar: "/placeholder.svg?height=100&width=100",
     initials: "CM",
     rating: 5,
     text: "La transparencia de MIR es excepcional. Recibo reportes trimestrales detallados y las distribuciones han sido consistentes. Mi portafolio está diversificado en dólares.",
@@ -17,7 +15,6 @@ const testimonials = [
   {
     name: "Ana Rodríguez",
     location: "Monterrey, MX",
-    avatar: "/placeholder.svg?height=100&width=100",
     initials: "AR",
     rating: 5,
     text: "Invertir en bienes raíces comerciales en EE.UU. parecía complicado, pero MIR simplificó todo el proceso. El equipo es profesional y siempre disponible.",
@@ -25,7 +22,6 @@ const testimonials = [
   {
     name: "Roberto Silva",
     location: "Guadalajara, MX",
-    avatar: "/placeholder.svg?height=100&width=100",
     initials: "RS",
     rating: 5,
     text: "Los rendimientos han superado mis expectativas. La curaduría de propiedades es institucional y el due diligence externo me da mucha confianza.",
@@ -33,23 +29,13 @@ const testimonials = [
   {
     name: "María González",
     location: "Querétaro, MX",
-    avatar: "/placeholder.svg?height=100&width=100",
     initials: "MG",
     rating: 5,
-    text: "Como inversionista conservadora, aprecio el enfoque en propiedades Core con inquilinos de alta calidad. Las distribuciones son puntuales.",
+    text: "Como inversionista conservadora, aprecio el enfoque en propiedades Core con inquilinos de alta calidad. Las distribuciones son puntuales y la comunicación es excelente.",
   },
 ]
 
 export function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,53 +46,43 @@ export function Testimonials() {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <Card className="border-2">
-            <CardContent className="p-8 md:p-12">
-              <div className="flex flex-col md:flex-row gap-6 items-start">
-                <Avatar className="h-16 w-16 flex-shrink-0">
-                  <AvatarImage
-                    src={testimonials[currentIndex].avatar || "/placeholder.svg"}
-                    alt={testimonials[currentIndex].name}
-                  />
-                  <AvatarFallback className="bg-primary text-primary-foreground text-lg">
-                    {testimonials[currentIndex].initials}
-                  </AvatarFallback>
-                </Avatar>
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {testimonials.map((t, index) => (
+            <Card
+              key={index}
+              className="border border-border/60 hover:border-accent/40 hover:shadow-lg transition-all duration-300 group"
+            >
+              <CardContent className="p-6 md:p-8">
+                {/* Quote icon */}
+                <Quote className="h-7 w-7 text-accent/30 mb-4 group-hover:text-accent/50 transition-colors" />
 
-                <div className="flex-1">
-                  <div className="flex gap-1 mb-3">
-                    {Array.from({ length: testimonials[currentIndex].rating }).map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-accent text-accent" />
-                    ))}
-                  </div>
+                {/* Stars */}
+                <div className="flex gap-0.5 mb-4">
+                  {Array.from({ length: t.rating }).map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+                  ))}
+                </div>
 
-                  <p className="text-lg text-foreground mb-4 leading-relaxed italic">
-                    "{testimonials[currentIndex].text}"
-                  </p>
+                {/* Text */}
+                <p className="text-foreground/85 mb-6 leading-relaxed text-sm md:text-base">
+                  "{t.text}"
+                </p>
 
+                {/* Author */}
+                <div className="flex items-center gap-3 pt-4 border-t border-border/50">
+                  <Avatar className="h-10 w-10">
+                    <AvatarFallback className="bg-primary text-primary-foreground text-sm font-semibold">
+                      {t.initials}
+                    </AvatarFallback>
+                  </Avatar>
                   <div>
-                    <div className="font-semibold text-foreground">{testimonials[currentIndex].name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonials[currentIndex].location}</div>
+                    <div className="font-semibold text-sm text-foreground">{t.name}</div>
+                    <div className="text-xs text-muted-foreground">{t.location}</div>
                   </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Carousel Indicators */}
-          <div className="flex justify-center gap-2 mt-6">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`h-2 rounded-full transition-all ${
-                  index === currentIndex ? "w-8 bg-primary" : "w-2 bg-border"
-                }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>

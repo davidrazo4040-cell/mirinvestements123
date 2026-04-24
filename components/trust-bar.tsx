@@ -1,6 +1,5 @@
 "use client"
 
-import { Card } from "@/components/ui/card"
 import { Building2, Users, TrendingUp, Award } from "lucide-react"
 
 export function TrustBar() {
@@ -32,18 +31,20 @@ export function TrustBar() {
   ]
 
   return (
-    <section className="py-16 bg-muted/30">
+    <section className="py-16 bg-primary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-4">
           {stats.map((stat, index) => {
             const Icon = stat.icon
             return (
-              <Card key={index} className="p-6 text-center hover:shadow-lg transition-shadow">
-                <Icon className="h-8 w-8 mx-auto mb-3 text-primary" />
-                <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
-                <div className="text-sm font-semibold text-foreground mb-1">{stat.label}</div>
-                <div className="text-xs text-muted-foreground">{stat.description}</div>
-              </Card>
+              <div key={index} className="text-center group">
+                <Icon className="h-5 w-5 mx-auto mb-3 text-accent/60 group-hover:text-accent transition-colors duration-300" />
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2 leading-none tabular-nums">
+                  {stat.value}
+                </div>
+                <div className="text-sm font-semibold text-primary-foreground mb-1">{stat.label}</div>
+                <div className="text-xs text-primary-foreground/55">{stat.description}</div>
+              </div>
             )
           })}
         </div>

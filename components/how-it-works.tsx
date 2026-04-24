@@ -1,6 +1,5 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ClipboardCheck, Building2, TrendingUp, ArrowRight } from "lucide-react"
 
@@ -45,7 +44,7 @@ export function HowItWorks() {
   ]
 
   return (
-    <section id="como-funciona" className="py-20 bg-muted/30">
+    <section id="como-funciona" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Cómo Funciona</h2>
@@ -54,45 +53,42 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto relative">
+          {/* Connector line (desktop) */}
+          <div className="hidden md:block absolute top-20 left-[calc(33.33%+1rem)] right-[calc(33.33%+1rem)] h-px bg-gradient-to-r from-accent/40 via-accent/60 to-accent/40 z-0" />
+
           {steps.map((step, index) => {
             const Icon = step.icon
             return (
-              <div key={index} className="relative">
-                <Card className="h-full hover:shadow-xl transition-shadow">
-                  <CardContent className="p-8">
-                    {/* Step Number */}
-                    <div className="text-6xl font-bold text-accent/20 mb-4">{step.number}</div>
-
-                    {/* Icon */}
-                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                      <Icon className="h-8 w-8 text-primary" />
+              <div key={index} className="relative z-10 flex flex-col">
+                {/* Step card */}
+                <div className="bg-background border border-border/70 rounded-2xl p-8 h-full flex flex-col hover:shadow-xl hover:border-accent/30 transition-all duration-300 group">
+                  {/* Step number + icon row */}
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="text-6xl font-bold text-accent/15 leading-none group-hover:text-accent/25 transition-colors duration-300">
+                      {step.number}
                     </div>
-
-                    {/* Content */}
-                    <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">{step.description}</p>
-
-                    {/* CTA */}
-                    <Button onClick={step.action} variant="outline" className="w-full group bg-transparent">
-                      {step.cta}
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* Arrow Connector (desktop only) */}
-                {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                    <ArrowRight className="h-8 w-8 text-accent" />
+                    <div className="w-12 h-12 rounded-xl bg-primary/8 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/15 transition-colors duration-300">
+                      <Icon className="h-6 w-6 text-primary group-hover:text-accent transition-colors duration-300" />
+                    </div>
                   </div>
-                )}
+
+                  {/* Content */}
+                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed text-sm flex-1">{step.description}</p>
+
+                  {/* CTA */}
+                  <Button onClick={step.action} variant="outline" className="w-full group/btn bg-transparent mt-auto">
+                    {step.cta}
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
               </div>
             )
           })}
         </div>
 
-        {/* Additional CTA */}
+        {/* Bottom CTA */}
         <div className="text-center mt-12">
           <Button
             size="lg"
@@ -100,7 +96,7 @@ export function HowItWorks() {
               const element = document.getElementById("contacto")
               if (element) element.scrollIntoView({ behavior: "smooth" })
             }}
-            className="px-8"
+            className="px-8 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200"
           >
             Agenda una Llamada
           </Button>

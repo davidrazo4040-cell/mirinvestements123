@@ -1,13 +1,34 @@
 "use client"
 
+import type React from "react"
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Facebook, Twitter, Linkedin, Instagram, Mail } from "lucide-react"
+import { Facebook, Twitter, Linkedin, Instagram, Mail, CheckCircle2 } from "lucide-react"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
+  const [newsletterEmail, setNewsletterEmail] = useState("")
+  const [subscribed, setSubscribed] = useState(false)
+  const [subscribing, setSubscribing] = useState(false)
+
+  const handleNewsletter = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!newsletterEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newsletterEmail)) return
+    setSubscribing(true)
+    await new Promise((r) => setTimeout(r, 600))
+    setSubscribing(false)
+    setSubscribed(true)
+    setNewsletterEmail("")
+    setTimeout(() => setSubscribed(false), 5000)
+  }
+
+  const scrollTo = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) element.scrollIntoView({ behavior: "smooth" })
+  }
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -26,42 +47,23 @@ export function Footer() {
               Acceso institucional a bienes raíces comerciales AAA en Estados Unidos para inversionistas mexicanos.
             </p>
             <div className="flex gap-3">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-4 w-4" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-4 w-4" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-4 w-4" />
-              </a>
+              {[
+                { href: "https://facebook.com", label: "Facebook", Icon: Facebook },
+                { href: "https://twitter.com", label: "Twitter", Icon: Twitter },
+                { href: "https://linkedin.com", label: "LinkedIn", Icon: Linkedin },
+                { href: "https://instagram.com", label: "Instagram", Icon: Instagram },
+              ].map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
+                  aria-label={label}
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -69,50 +71,22 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Enlaces Rápidos</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById("portafolio")
-                    if (element) element.scrollIntoView({ behavior: "smooth" })
-                  }}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Portafolio
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById("como-funciona")
-                    if (element) element.scrollIntoView({ behavior: "smooth" })
-                  }}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Cómo Funciona
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById("por-que-mir")
-                    if (element) element.scrollIntoView({ behavior: "smooth" })
-                  }}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Por Qué MIR
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById("faq")
-                    if (element) element.scrollIntoView({ behavior: "smooth" })
-                  }}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  FAQ
-                </button>
-              </li>
+              {[
+                { label: "Portafolio", id: "portafolio" },
+                { label: "Cómo Funciona", id: "como-funciona" },
+                { label: "Por Qué MIR", id: "por-que-mir" },
+                { label: "FAQ", id: "faq" },
+                { label: "Contacto", id: "contacto" },
+              ].map(({ label, id }) => (
+                <li key={id}>
+                  <button
+                    onClick={() => scrollTo(id)}
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  >
+                    {label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -120,38 +94,18 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/privacidad"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Aviso de Privacidad
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/terminos"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Términos y Condiciones
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/riesgos"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Advertencias de Riesgo
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/cumplimiento"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Cumplimiento Regulatorio
-                </Link>
-              </li>
+              {[
+                { label: "Aviso de Privacidad", href: "/privacidad" },
+                { label: "Términos y Condiciones", href: "/terminos" },
+                { label: "Advertencias de Riesgo", href: "/riesgos" },
+                { label: "Cumplimiento Regulatorio", href: "/cumplimiento" },
+              ].map(({ label, href }) => (
+                <li key={href}>
+                  <Link href={href} className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -161,17 +115,27 @@ export function Footer() {
             <p className="text-sm text-primary-foreground/80 mb-4">
               Recibe insights del mercado y oportunidades de inversión
             </p>
-            <form className="space-y-2">
-              <Input
-                type="email"
-                placeholder="tu@email.com"
-                className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50"
-              />
-              <Button type="submit" variant="secondary" className="w-full">
-                <Mail className="h-4 w-4 mr-2" />
-                Suscribirse
-              </Button>
-            </form>
+            {subscribed ? (
+              <div className="flex items-center gap-2 text-sm text-accent py-2">
+                <CheckCircle2 className="h-4 w-4" />
+                <span>¡Suscrito con éxito!</span>
+              </div>
+            ) : (
+              <form onSubmit={handleNewsletter} className="space-y-2">
+                <Input
+                  type="email"
+                  placeholder="tu@email.com"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50"
+                  required
+                />
+                <Button type="submit" variant="secondary" className="w-full" disabled={subscribing}>
+                  <Mail className="h-4 w-4 mr-2" />
+                  {subscribing ? "Suscribiendo..." : "Suscribirse"}
+                </Button>
+              </form>
+            )}
             <p className="text-xs text-primary-foreground/60 mt-2">
               Double opt-in. Puedes cancelar en cualquier momento.
             </p>
@@ -181,9 +145,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-primary-foreground/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/80">
-            <div>
-              <p>© {currentYear} MIR Investments. Todos los derechos reservados.</p>
-            </div>
+            <p>© {currentYear} MIR Investments. Todos los derechos reservados.</p>
             <div className="flex flex-wrap justify-center gap-4">
               <span>Ciudad de México, México</span>
               <span>•</span>
