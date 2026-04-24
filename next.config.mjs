@@ -34,7 +34,7 @@ const nextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "frame-ancestors 'self' https://mirinvestments.com https://*.wixsite.com https://editor.wix.com https://*.wix.com",
+            value: "frame-ancestors 'self' https://mirinvestments.com https://www.mirinvestments.com https://*.wixsite.com https://editor.wix.com https://*.wix.com",
           },
           {
             key: "X-Frame-Options",
