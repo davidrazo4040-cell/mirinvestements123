@@ -1,10 +1,6 @@
 "use client"
 
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Slider } from "@/components/ui/slider"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import type { FilterState } from "@/lib/types"
 import { formatCurrency } from "@/utils/performance-math"
 
@@ -40,148 +36,117 @@ export function PortfolioFilters({ filters, onFilterChange, onReset }: Portfolio
     onFilterChange({ ...filters, leaseType: newLeases })
   }
 
+  const CheckGroup = ({
+    label,
+    items,
+    activeItems,
+    onChange,
+  }: {
+    label: string
+    items: string[]
+    activeItems: string[]
+    onChange: (item: string, checked: boolean) => void
+  }) => (
+    <div className="py-5 border-b border-foreground/10">
+      <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4">{label}</p>
+      <div className="space-y-2.5">
+        {items.map((item) => (
+          <label key={item} className="flex items-center gap-3 cursor-pointer group">
+            <input
+              type="checkbox"
+              checked={activeItems.includes(item)}
+              onChange={(e) => onChange(item, e.target.checked)}
+              className="w-3 h-3 border border-foreground/30 bg-transparent accent-accent cursor-pointer"
+            />
+            <span className="text-sm text-foreground/70 group-hover:text-foreground transition-colors duration-200">
+              {item}
+            </span>
+          </label>
+        ))}
+      </div>
+    </div>
+  )
+
   return (
-    <Card className="sticky top-24">
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle>Filtros</CardTitle>
-          <Button variant="ghost" size="sm" onClick={onReset}>
-            Limpiar
-          </Button>
-        </div>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        {/* Property Type */}
-        <div>
-          <Label className="text-base font-semibold mb-3 block">Tipo de Propiedad</Label>
-          <div className="space-y-2">
-            {propertyTypes.map((type) => (
-              <div key={type} className="flex items-center space-x-2">
-                <Checkbox
-                  id={`type-${type}`}
-                  checked={filters.type.includes(type)}
-                  onCheckedChange={(checked) => handleTypeChange(type, checked as boolean)}
-                />
-                <label
-                  htmlFor={`type-${type}`}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
-                >
-                  {type}
-                </label>
-              </div>
-            ))}
-          </div>
-        </div>
+    <div className="sticky top-24 border border-foreground/12 p-6">
+      <div className="flex items-center justify-between mb-5 pb-4 border-b border-foreground/10">
+        <p className="text-xs tracking-[0.25em] uppercase font-medium text-foreground">Filtros</p>
+        <button
+          onClick={onReset}
+          className="text-xs text-muted-foreground hover:text-accent transition-colors duration-200"
+        >
+          Limpiar
+        </button>
+      </div>
 
-        {/* State */}
-        <div>
-          <Label className="text-base font-semibold mb-3 block">Estado</Label>
-          <div className="space-y-2">
-            {states.map((state) => (
-              <div key={state} className="flex items-center space-x-2">
-                <Checkbox
-                  id={`state-${state}`}
-                  checked={filters.state.includes(state)}
-                  onCheckedChange={(checked) => handleStateChange(state, checked as boolean)}
-                />
-                <label
-                  htmlFor={`state-${state}`}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
-                >
-                  {state}
-                </label>
-              </div>
-            ))}
-          </div>
-        </div>
+      <CheckGroup
+        label="Tipo de Propiedad"
+        items={propertyTypes}
+        activeItems={filters.type}
+        onChange={handleTypeChange}
+      />
 
-        {/* Cap Rate Range */}
-        <div>
-          <Label className="text-base font-semibold mb-3 block">
-            Cap Rate: {filters.minCapRate}% - {filters.maxCapRate}%
-          </Label>
-          <Slider
-            min={0}
-            max={15}
-            step={0.5}
-            value={[filters.minCapRate, filters.maxCapRate]}
-            onValueChange={([min, max]) => onFilterChange({ ...filters, minCapRate: min, maxCapRate: max })}
-            className="mt-2"
-          />
-        </div>
+      <CheckGroup
+        label="Estado"
+        items={states}
+        activeItems={filters.state}
+        onChange={handleStateChange}
+      />
 
-        {/* Investment Range */}
-        <div>
-          <Label className="text-base font-semibold mb-3 block">
-            Inversión: {formatCurrency(filters.minInvestment)} - {formatCurrency(filters.maxInvestment)}
-          </Label>
-          <Slider
-            min={100000}
-            max={500000}
-            step={10000}
-            value={[filters.minInvestment, filters.maxInvestment]}
-            onValueChange={([min, max]) => onFilterChange({ ...filters, minInvestment: min, maxInvestment: max })}
-            className="mt-2"
-          />
-        </div>
+      {/* Cap Rate Range */}
+      <div className="py-5 border-b border-foreground/10">
+        <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">Cap Rate</p>
+        <p className="text-xs text-foreground mb-4">{filters.minCapRate}% – {filters.maxCapRate}%</p>
+        <Slider
+          min={0}
+          max={15}
+          step={0.5}
+          value={[filters.minCapRate, filters.maxCapRate]}
+          onValueChange={([min, max]) => onFilterChange({ ...filters, minCapRate: min, maxCapRate: max })}
+        />
+      </div>
 
-        {/* Risk Profile */}
-        <div>
-          <Label className="text-base font-semibold mb-3 block">Perfil de Riesgo</Label>
-          <div className="space-y-2">
-            {riskProfiles.map((risk) => (
-              <div key={risk} className="flex items-center space-x-2">
-                <Checkbox
-                  id={`risk-${risk}`}
-                  checked={filters.riskProfile.includes(risk)}
-                  onCheckedChange={(checked) => handleRiskChange(risk, checked as boolean)}
-                />
-                <label
-                  htmlFor={`risk-${risk}`}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
-                >
-                  {risk}
-                </label>
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* Investment Range */}
+      <div className="py-5 border-b border-foreground/10">
+        <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">Inversión Mínima</p>
+        <p className="text-xs text-foreground mb-4">
+          {formatCurrency(filters.minInvestment)} – {formatCurrency(filters.maxInvestment)}
+        </p>
+        <Slider
+          min={100000}
+          max={500000}
+          step={10000}
+          value={[filters.minInvestment, filters.maxInvestment]}
+          onValueChange={([min, max]) => onFilterChange({ ...filters, minInvestment: min, maxInvestment: max })}
+        />
+      </div>
 
-        {/* Lease Type */}
-        <div>
-          <Label className="text-base font-semibold mb-3 block">Tipo de Contrato</Label>
-          <div className="space-y-2">
-            {leaseTypes.map((lease) => (
-              <div key={lease} className="flex items-center space-x-2">
-                <Checkbox
-                  id={`lease-${lease}`}
-                  checked={filters.leaseType.includes(lease)}
-                  onCheckedChange={(checked) => handleLeaseTypeChange(lease, checked as boolean)}
-                />
-                <label
-                  htmlFor={`lease-${lease}`}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
-                >
-                  {lease}
-                </label>
-              </div>
-            ))}
-          </div>
-        </div>
+      <CheckGroup
+        label="Perfil de Riesgo"
+        items={riskProfiles}
+        activeItems={filters.riskProfile}
+        onChange={handleRiskChange}
+      />
 
-        {/* Occupancy */}
-        <div>
-          <Label className="text-base font-semibold mb-3 block">Ocupación Mínima: {filters.minOccupancy}%</Label>
-          <Slider
-            min={0}
-            max={100}
-            step={5}
-            value={[filters.minOccupancy]}
-            onValueChange={([value]) => onFilterChange({ ...filters, minOccupancy: value })}
-            className="mt-2"
-          />
-        </div>
-      </CardContent>
-    </Card>
+      <CheckGroup
+        label="Tipo de Contrato"
+        items={leaseTypes}
+        activeItems={filters.leaseType}
+        onChange={handleLeaseTypeChange}
+      />
+
+      {/* Occupancy */}
+      <div className="py-5">
+        <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">Ocupación Mínima</p>
+        <p className="text-xs text-foreground mb-4">{filters.minOccupancy}%</p>
+        <Slider
+          min={0}
+          max={100}
+          step={5}
+          value={[filters.minOccupancy]}
+          onValueChange={([value]) => onFilterChange({ ...filters, minOccupancy: value })}
+        />
+      </div>
+    </div>
   )
 }

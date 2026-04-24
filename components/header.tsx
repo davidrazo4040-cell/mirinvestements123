@@ -2,18 +2,13 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 20)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -26,97 +21,84 @@ export function Header() {
     }
   }
 
+  const navItems = [
+    { label: "Portafolio", id: "portafolio" },
+    { label: "Cómo Funciona", id: "como-funciona" },
+    { label: "Por Qué MIR", id: "por-que-mir" },
+    { label: "FAQ", id: "faq" },
+  ]
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-md" : "bg-transparent"
+        isScrolled
+          ? "bg-background/97 backdrop-blur-sm border-b border-foreground/10"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center">
+          <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             <Image
               src="https://static.wixstatic.com/media/be9379_b8d95d2742e24da59f06520fe51dc343~mv2.png/v1/fill/w_142,h_180,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Mir.png"
-              alt="MIR Investments Logo"
+              alt="MIR Investments"
               width={60}
               height={76}
-              className="h-14 w-auto"
+              className="h-12 w-auto"
               priority
             />
-          </Link>
+          </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-10">
+            {navItems.map(({ label, id }) => (
+              <button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                className="text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-foreground transition-colors duration-200"
+              >
+                {label}
+              </button>
+            ))}
             <button
-              onClick={() => scrollToSection("portafolio")}
-              className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+              onClick={() => scrollToSection("contacto")}
+              className="text-xs tracking-[0.2em] uppercase border-b border-foreground pb-0.5 hover:text-accent hover:border-accent transition-colors duration-200 ml-2"
             >
-              Portafolio
+              Solicitar Información
             </button>
-            <button
-              onClick={() => scrollToSection("como-funciona")}
-              className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-            >
-              Cómo Funciona
-            </button>
-            <button
-              onClick={() => scrollToSection("por-que-mir")}
-              className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-            >
-              Por Qué MIR
-            </button>
-            <button
-              onClick={() => scrollToSection("faq")}
-              className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-            >
-              FAQ
-            </button>
-            <Button onClick={() => scrollToSection("contacto")} size="lg" className="ml-4">
-              Solicita Información
-            </Button>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden flex flex-col gap-1.5 p-2"
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            <span className={`block w-5 h-px bg-foreground transition-all duration-200 ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block w-5 h-px bg-foreground transition-all duration-200 ${isMobileMenuOpen ? "opacity-0" : ""}`} />
+            <span className={`block w-5 h-px bg-foreground transition-all duration-200 ${isMobileMenuOpen ? "-rotate-45 -translate-y-2.5" : ""}`} />
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-border">
-            <div className="flex flex-col gap-4">
+          <nav className="md:hidden py-6 border-t border-foreground/10">
+            <div className="flex flex-col gap-5">
+              {navItems.map(({ label, id }) => (
+                <button
+                  key={id}
+                  onClick={() => scrollToSection(id)}
+                  className="text-left text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-foreground transition-colors"
+                >
+                  {label}
+                </button>
+              ))}
               <button
-                onClick={() => scrollToSection("portafolio")}
-                className="text-left text-sm font-medium text-foreground/80 hover:text-foreground transition-colors py-2"
+                onClick={() => scrollToSection("contacto")}
+                className="text-left text-xs tracking-[0.2em] uppercase border-b border-foreground pb-0.5 w-fit hover:text-accent hover:border-accent transition-colors"
               >
-                Portafolio
+                Solicitar Información
               </button>
-              <button
-                onClick={() => scrollToSection("como-funciona")}
-                className="text-left text-sm font-medium text-foreground/80 hover:text-foreground transition-colors py-2"
-              >
-                Cómo Funciona
-              </button>
-              <button
-                onClick={() => scrollToSection("por-que-mir")}
-                className="text-left text-sm font-medium text-foreground/80 hover:text-foreground transition-colors py-2"
-              >
-                Por Qué MIR
-              </button>
-              <button
-                onClick={() => scrollToSection("faq")}
-                className="text-left text-sm font-medium text-foreground/80 hover:text-foreground transition-colors py-2"
-              >
-                FAQ
-              </button>
-              <Button onClick={() => scrollToSection("contacto")} size="lg" className="w-full">
-                Solicita Información
-              </Button>
             </div>
           </nav>
         )}

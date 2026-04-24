@@ -1,7 +1,6 @@
 "use client"
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Card, CardContent } from "@/components/ui/card"
 
 export function FAQSection() {
   const faqs = [
@@ -38,12 +37,12 @@ export function FAQSection() {
     {
       question: "¿Cuándo y cómo recibo las distribuciones?",
       answer:
-        "Las distribuciones se realizan trimestralmente, típicamente 30-45 días después del cierre del trimestre. Los pagos se transfieren directamente a tu cuenta bancaria en México o EE.UU. vía transferencia internacional. El monto de distribución depende del ingreso neto operativo de la propiedad después de gastos y reservas. Recibes un reporte detallado con cada distribución explicando el cálculo.",
+        "Las distribuciones se realizan trimestralmente, típicamente 30-45 días después del cierre del trimestre. Los pagos se transfieren directamente a tu cuenta bancaria en México o EE.UU. vía transferencia internacional. El monto de distribución depende del ingreso neto operativo de la propiedad después de gastos y reservas.",
     },
     {
       question: "¿Qué pasa si un inquilino desocupa la propiedad?",
       answer:
-        "Mantenemos reservas de capital para cubrir periodos de vacancia y costos de re-arrendamiento. El property manager local inicia inmediatamente el proceso de comercialización. Nuestro enfoque en propiedades AAA en ubicaciones prime reduce significativamente el tiempo de vacancia. Históricamente, hemos re-arrendado espacios en 3-6 meses. Durante vacancia, las distribuciones pueden reducirse temporalmente.",
+        "Mantenemos reservas de capital para cubrir periodos de vacancia y costos de re-arrendamiento. El property manager local inicia inmediatamente el proceso de comercialización. Nuestro enfoque en propiedades AAA en ubicaciones prime reduce significativamente el tiempo de vacancia. Históricamente, hemos re-arrendado espacios en 3-6 meses.",
     },
     {
       question: "¿Puedo visitar las propiedades?",
@@ -53,46 +52,49 @@ export function FAQSection() {
     {
       question: "¿Cómo se determina el valor de las propiedades?",
       answer:
-        "Obtenemos valuaciones independientes (appraisals) de firmas certificadas MAI al momento de adquisición y anualmente. Las valuaciones utilizan tres métodos: (1) Comparables de mercado, (2) Capitalización de ingresos (NOI / Cap Rate), (3) Flujos de efectivo descontados. Para reportes trimestrales, ajustamos valores basados en transacciones comparables recientes y cambios en fundamentales de mercado.",
+        "Obtenemos valuaciones independientes (appraisals) de firmas certificadas MAI al momento de adquisición y anualmente. Las valuaciones utilizan tres métodos: (1) Comparables de mercado, (2) Capitalización de ingresos (NOI / Cap Rate), (3) Flujos de efectivo descontados.",
     },
   ]
 
   return (
-    <section id="faq" className="py-20 bg-muted/30">
+    <section id="faq" className="py-24 bg-muted/20 border-b border-foreground/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Preguntas Frecuentes</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="mb-16">
+          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">FAQ</p>
+          <h2 className="font-serif text-4xl md:text-5xl font-light text-foreground">
+            Preguntas <em className="italic">frecuentes</em>
+          </h2>
+          <p className="text-muted-foreground mt-4 max-w-xl leading-relaxed">
             Respuestas a las preguntas más comunes sobre inversión en bienes raíces comerciales con MIR
           </p>
         </div>
 
-        <Card className="max-w-4xl mx-auto">
-          <CardContent className="p-6 md:p-8">
-            <Accordion type="single" collapsible className="w-full">
-              {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left text-base font-semibold hover:text-primary">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed">{faq.answer}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </CardContent>
-        </Card>
+        <div className="max-w-4xl">
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="border-b border-foreground/10 border-t-0">
+                <AccordionTrigger className="text-left text-sm md:text-base font-medium hover:text-accent hover:no-underline py-6 [&>svg]:text-accent">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed text-sm pb-6">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
 
-        <div className="text-center mt-8">
-          <p className="text-sm text-muted-foreground mb-4">¿No encuentras la respuesta que buscas?</p>
-          <button
-            onClick={() => {
-              const element = document.getElementById("contacto")
-              if (element) element.scrollIntoView({ behavior: "smooth" })
-            }}
-            className="text-primary hover:underline font-medium"
-          >
-            Contáctanos directamente
-          </button>
+          <div className="mt-12 pt-8 border-t border-foreground/10">
+            <p className="text-sm text-muted-foreground mb-4">¿No encuentras la respuesta que buscas?</p>
+            <button
+              onClick={() => {
+                const element = document.getElementById("contacto")
+                if (element) element.scrollIntoView({ behavior: "smooth" })
+              }}
+              className="text-xs tracking-[0.2em] uppercase border-b border-foreground pb-0.5 hover:text-accent hover:border-accent transition-colors duration-200"
+            >
+              Contáctanos directamente →
+            </button>
+          </div>
         </div>
       </div>
     </section>

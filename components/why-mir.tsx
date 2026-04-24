@@ -1,7 +1,5 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Search, FileCheck, Settings, BarChart3, Shield, Globe, CheckCircle } from "lucide-react"
 
 export function WhyMIR() {
@@ -59,68 +57,67 @@ export function WhyMIR() {
   ]
 
   return (
-    <section id="por-que-mir" className="py-24 bg-background">
+    <section id="por-que-mir" className="py-24 bg-background border-b border-foreground/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Por Qué MIR Investments</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Acceso institucional a bienes raíces comerciales con el respaldo de un equipo experimentado y procesos
-            rigurosos
+
+        <div className="mb-16">
+          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">Diferenciadores</p>
+          <h2 className="font-serif text-4xl md:text-5xl font-light text-foreground">
+            Por qué <em className="italic">MIR</em> Investments
+          </h2>
+          <p className="text-muted-foreground mt-4 max-w-xl leading-relaxed">
+            Acceso institucional a bienes raíces comerciales con el respaldo de un equipo experimentado y procesos rigurosos
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 border-t border-l border-foreground/10 mb-20">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon
             return (
-              <Card
+              <div
                 key={index}
-                className="border-border/60 hover:border-accent/40 hover:shadow-xl transition-all duration-300 group"
+                className="border-b border-r border-foreground/10 p-8 md:p-10 group hover:bg-muted/30 transition-colors duration-300"
               >
-                <CardContent className="p-6">
-                  <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors duration-300">
-                    <Icon className="h-5 w-5 text-accent" />
-                  </div>
-                  <h3 className="text-base font-bold mb-2">{benefit.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{benefit.description}</p>
-                </CardContent>
-              </Card>
+                <Icon className="h-4 w-4 text-accent mb-5 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+                <h3 className="text-base font-semibold mb-3 text-foreground">{benefit.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{benefit.description}</p>
+              </div>
             )
           })}
         </div>
 
         {/* Data Room */}
-        <div className="rounded-2xl bg-gradient-to-br from-primary/5 via-background to-accent/5 border-2 border-border/70 p-8 md:p-12">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
+        <div className="border border-foreground/15 p-10 md:p-16">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-2xl font-bold mb-4">Centro de Recursos para Inversionistas</h3>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                Accede a nuestro data room con documentación completa: fichas técnicas de propiedades, reportes de due
+              <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">Centro de Recursos</p>
+              <h3 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-6">
+                Data Room para<br /><em className="italic">Inversionistas</em>
+              </h3>
+              <p className="text-muted-foreground mb-10 leading-relaxed text-sm">
+                Accede a documentación completa: fichas técnicas de propiedades, reportes de due
                 diligence, estados financieros históricos, estructura legal y más.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
+              <div className="flex flex-col sm:flex-row gap-8">
+                <button
                   onClick={scrollToContact}
-                  className="shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200"
+                  className="text-xs tracking-[0.2em] uppercase border-b border-foreground pb-0.5 w-fit hover:text-accent hover:border-accent transition-colors duration-200"
                 >
                   Solicitar Acceso al Data Room
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
+                </button>
+                <button
                   onClick={scrollToContact}
-                  className="bg-transparent hover:-translate-y-0.5 transition-all duration-200"
+                  className="text-xs tracking-[0.2em] uppercase text-muted-foreground border-b border-muted-foreground/40 pb-0.5 w-fit hover:text-foreground hover:border-foreground transition-colors duration-200"
                 >
                   Descargar Presentación
-                </Button>
+                </button>
               </div>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {resources.map((item) => (
-                <div key={item} className="flex items-center gap-3 text-sm">
-                  <CheckCircle className="h-4 w-4 text-accent flex-shrink-0" />
-                  <span>{item}</span>
+                <div key={item} className="flex items-center gap-4 text-sm border-b border-foreground/8 pb-4 last:border-0 last:pb-0">
+                  <div className="w-1 h-1 bg-accent flex-shrink-0" />
+                  <span className="text-foreground/80">{item}</span>
                 </div>
               ))}
             </div>

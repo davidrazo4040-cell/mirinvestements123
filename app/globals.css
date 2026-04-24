@@ -4,96 +4,45 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* MIR Brand Colors - Deep Navy and Gold */
-  --background: 0 0% 99%;
-  --foreground: 222.2 84% 4.9%;
+  /* Design A — Minimalist Luxury */
+  /* Chalk White #F9F8F6 · Midnight Navy #0D1B2A · Antique Gold #B8953F */
 
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --background: 44 19% 97%;
+  --foreground: 211 53% 11%;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --card: 44 19% 97%;
+  --card-foreground: 211 53% 11%;
 
-  /* MIR Primary - Deep Navy/Blue */
-  --primary: 222 47% 11%;
-  --primary-foreground: 210 40% 98%;
+  --popover: 44 19% 97%;
+  --popover-foreground: 211 53% 11%;
 
-  /* MIR Accent - Gold/Amber for trust and premium feel */
-  --accent: 43 96% 56%;
-  --accent-foreground: 222 47% 11%;
+  --primary: 211 53% 11%;
+  --primary-foreground: 44 19% 97%;
 
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  --accent: 43 49% 48%;
+  --accent-foreground: 211 53% 11%;
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --secondary: 44 10% 93%;
+  --secondary-foreground: 211 30% 25%;
 
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
+  --muted: 44 10% 93%;
+  --muted-foreground: 211 20% 45%;
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 84% 4.9%;
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 44 19% 97%;
 
-  --chart-1: 222 47% 11%;
-  --chart-2: 43 96% 56%;
+  --border: 211 15% 85%;
+  --input: 211 15% 85%;
+  --ring: 211 53% 11%;
+
+  --chart-1: 211 53% 11%;
+  --chart-2: 43 49% 48%;
   --chart-3: 197 37% 24%;
   --chart-4: 142 76% 36%;
   --chart-5: 262 52% 47%;
 
-  --radius: 0.5rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
-
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
-
-  --primary: 43 96% 56%;
-  --primary-foreground: 222 47% 11%;
-
-  --accent: 43 96% 56%;
-  --accent-foreground: 222 47% 11%;
-
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
-
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 212.7 26.8% 83.9%;
-
-  --chart-1: 43 96% 56%;
-  --chart-2: 222 47% 11%;
-  --chart-3: 197 37% 24%;
-  --chart-4: 142 76% 36%;
-  --chart-5: 262 52% 47%;
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  /* No border radius — Design A is sharp edges */
+  --radius: 0rem;
 }
 
 @theme inline {
@@ -121,18 +70,12 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: 0rem;
+  --radius-md: 0rem;
+  --radius-lg: 0rem;
+  --radius-xl: 0rem;
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-cormorant);
 }
 
 @layer base {
@@ -150,7 +93,7 @@
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -163,17 +106,12 @@
   to { opacity: 1; }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
 @layer utilities {
   .animate-fade-in-up {
-    animation: fade-in-up 0.7s ease-out both;
+    animation: fade-in-up 0.8s ease-out both;
   }
   .animate-fade-in {
-    animation: fade-in 0.5s ease-out both;
+    animation: fade-in 0.6s ease-out both;
   }
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
@@ -181,21 +119,25 @@
   .delay-400 { animation-delay: 400ms; }
   .delay-500 { animation-delay: 500ms; }
   .delay-600 { animation-delay: 600ms; }
+
+  /* Underline-only input style for Design A */
+  .input-underline {
+    @apply border-0 border-b border-foreground/25 rounded-none bg-transparent px-0 py-2 focus-visible:ring-0 focus-visible:outline-none focus-visible:border-foreground transition-colors duration-200 placeholder:text-muted-foreground/60;
+  }
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: hsl(222 47% 11% / 0.2);
-  border-radius: 99px;
+  background: hsl(211 53% 11% / 0.15);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(222 47% 11% / 0.4);
+  background: hsl(211 53% 11% / 0.3);
 }
 
 /* Text selection */
 ::selection {
-  background: hsl(43 96% 56% / 0.25);
-  color: hsl(222 47% 11%);
+  background: hsl(43 49% 48% / 0.2);
+  color: hsl(211 53% 11%);
 }
