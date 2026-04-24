@@ -27,6 +27,23 @@ const nextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors 'self' https://mirinvestments.com https://*.wixsite.com https://editor.wix.com https://*.wix.com",
+          },
+          {
+            key: "X-Frame-Options",
+            value: "ALLOWALL",
+          },
+        ],
+      },
+    ]
+  },
 }
 
 export default nextConfig
