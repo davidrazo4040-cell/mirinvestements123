@@ -18,7 +18,15 @@ export function Footer() {
     e.preventDefault()
     if (!newsletterEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newsletterEmail)) return
     setSubscribing(true)
-    await new Promise((r) => setTimeout(r, 600))
+    try {
+      await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "newsletter", email: newsletterEmail, source: "Newsletter Footer" }),
+      })
+    } catch {
+      // silently continue
+    }
     setSubscribing(false)
     setSubscribed(true)
     setNewsletterEmail("")

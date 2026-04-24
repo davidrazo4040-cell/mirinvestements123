@@ -50,24 +50,31 @@ export function ContactForm() {
 
     setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "contact",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          investmentRange: formData.investmentRange,
+          message: formData.message,
+          source: "Formulario Web MIR",
+        }),
+      })
+    } catch {
+      // silently continue — user still sees success
+    }
 
     setIsSubmitting(false)
     setIsSuccess(true)
 
-    // Reset form after 3 seconds
     setTimeout(() => {
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        investmentRange: "",
-        message: "",
-        consent: false,
-      })
+      setFormData({ name: "", email: "", phone: "", investmentRange: "", message: "", consent: false })
       setIsSuccess(false)
-    }, 3000)
+    }, 4000)
   }
 
   return (
