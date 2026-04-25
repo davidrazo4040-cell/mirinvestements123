@@ -1,6 +1,7 @@
 export interface Property {
   id: string
   name: string
+  status?: "active" | "sold"
   type: "Retail" | "Oficinas" | "Industrial" | "Multifamily" | "Data Center"
   city: string
   state: string

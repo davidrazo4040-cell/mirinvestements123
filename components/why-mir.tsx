@@ -95,20 +95,44 @@ export function WhyMIR() {
           })}
         </div>
 
-        {/* Data Room */}
-        <div className="rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-10 md:p-16 text-primary-foreground">
+        {/* Data Room — VIP */}
+        <div className="group relative rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-10 md:p-16 text-primary-foreground overflow-hidden">
+
+          {/* "By Invitation Only" overlay on hover */}
+          <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+            <div className="absolute inset-0 bg-primary/70 backdrop-blur-sm" />
+            <div className="relative flex flex-col items-center gap-3 text-center px-8">
+              <div className="w-12 h-12 rounded-full border border-accent/60 flex items-center justify-center mb-1">
+                <Shield className="h-5 w-5 text-accent" />
+              </div>
+              <p className="text-xs tracking-[0.5em] uppercase text-accent font-semibold">
+                By Invitation Only
+              </p>
+              <p className="text-primary-foreground/70 text-sm max-w-xs leading-relaxed">
+                El acceso al Data Room está reservado para inversionistas calificados. Contáctanos para solicitar acceso.
+              </p>
+              <Button
+                onClick={scrollToContact}
+                className="mt-2 pointer-events-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
+              >
+                Solicitar Acceso
+              </Button>
+            </div>
+          </div>
+
+          {/* Content */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">
-                Centro de Recursos
+                Acceso Exclusivo
               </p>
               <h3 className="text-3xl md:text-4xl font-bold mb-6">
-                Data Room para{" "}
-                <span className="text-accent">Inversionistas</span>
+                Data Room{" "}
+                <span className="text-accent">VIP</span>
               </h3>
               <p className="text-primary-foreground/75 mb-10 leading-relaxed text-sm">
-                Accede a documentación completa: fichas técnicas de propiedades, reportes de due
-                diligence, estados financieros históricos, estructura legal y más.
+                Documentación completa para inversionistas calificados: fichas técnicas, reportes de
+                due diligence, estados financieros y estructura legal.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
@@ -118,11 +142,13 @@ export function WhyMIR() {
                   Solicitar Acceso al Data Room
                 </Button>
                 <Button
-                  onClick={scrollToContact}
+                  asChild
                   variant="outline"
                   className="border-primary-foreground/30 text-primary-foreground bg-transparent hover:bg-primary-foreground/10 hover:border-primary-foreground/60"
                 >
-                  Descargar Presentación
+                  <a href="/mir-investments-portfolio-2026.pdf" download="MIR-Investments-Portfolio-2026.pdf">
+                    Descargar Presentación
+                  </a>
                 </Button>
               </div>
             </div>
