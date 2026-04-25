@@ -31,7 +31,7 @@ export function Hero() {
           <div className="animate-fade-in inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/40 bg-accent/10 backdrop-blur-sm mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             <span className="text-xs tracking-[0.25em] uppercase text-accent font-medium">
-              Inversión Institucional Accesible
+              Capital Institucional Privado
             </span>
           </div>
 

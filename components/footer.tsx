@@ -139,11 +139,11 @@ export function Footer() {
             <p>© {currentYear} MIR Investments. Todos los derechos reservados.</p>
             <div className="flex flex-wrap gap-6">
               <span>Ciudad de México, México</span>
-              <a href="mailto:info@mirinvestments.com" className="hover:text-primary-foreground/70 transition-colors">
-                info@mirinvestments.com
+              <a href="mailto:drazo@mirinvestments.com" className="hover:text-primary-foreground/70 transition-colors">
+                drazo@mirinvestments.com
               </a>
-              <a href="tel:+525555555555" className="hover:text-primary-foreground/70 transition-colors">
-                +52 (55) 5555-5555
+              <a href="tel:+525535650308" className="hover:text-primary-foreground/70 transition-colors">
+                +52 55 3565 0308
               </a>
             </div>
           </div>

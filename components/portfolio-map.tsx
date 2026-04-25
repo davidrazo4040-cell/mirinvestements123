@@ -49,13 +49,13 @@ export function PortfolioMap({ properties, selectedProperty, onPropertySelect }:
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill={isActive ? "hsl(222, 47%, 18%)" : "hsl(222, 47%, 13%)"}
-                  stroke="hsl(222, 47%, 25%)"
-                  strokeWidth={0.5}
+                  fill={isActive ? "hsl(222, 47%, 24%)" : "hsl(222, 47%, 12%)"}
+                  stroke={isActive ? "hsl(43, 60%, 40%)" : "hsl(222, 47%, 20%)"}
+                  strokeWidth={isActive ? 0.8 : 0.4}
                   style={{
                     default: { outline: "none" },
                     hover: {
-                      fill: isActive ? "hsl(222, 47%, 22%)" : "hsl(222, 47%, 16%)",
+                      fill: isActive ? "hsl(222, 47%, 30%)" : "hsl(222, 47%, 16%)",
                       outline: "none",
                     },
                     pressed: { outline: "none" },

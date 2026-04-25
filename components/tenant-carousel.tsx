@@ -1,21 +1,21 @@
 export function TenantCarousel() {
   const tenants = [
-    { name: "Walgreens", logo: "/logos/Walgreens_2020_primary_logo.svg", color: "#E31837" },
-    { name: "Teleperformance", logo: "/logos/Teleperformance_logo.svg", color: "#0057A8" },
-    { name: "Dollar Tree", logo: "/logos/Dollar_Tree_logo.svg", color: "#00A550" },
-    { name: "O'Reilly Auto Parts", logo: "/logos/O_Reilly_Auto_Parts_Logo.svg", color: "#C8102E" },
-    { name: "Office Depot", logo: "/logos/Office-Depot-Logo.svg", color: "#CC0000" },
-    { name: "Ace Hardware", logo: "/logos/Ace_Hardware_Logo.svg", color: "#CC0000" },
-    { name: "Aaron's Inc.", logo: "/logos/Aaron_s,_Inc._logo.svg", color: "#004990" },
-    { name: "DaVita", logo: "/logos/davita-logo-svg-vector.svg", color: "#E32226" },
-    { name: "Banco Santander", logo: "/logos/Banco_Santander_Logotipo_(2007-2018).svg", color: "#EC0000" },
-    { name: "Charter Fitness", logo: null, color: "#1e40af" },
-    { name: "Chipotle", logo: null, color: "#A52A1A" },
-    { name: "Lowe's", logo: null, color: "#004990" },
+    { name: "Walgreens", logo: "/logos/Walgreens_2020_primary_logo.svg" },
+    { name: "Teleperformance", logo: "/logos/Teleperformance_logo.svg" },
+    { name: "Dollar Tree", logo: "/logos/Dollar_Tree_logo.svg" },
+    { name: "O'Reilly Auto Parts", logo: "/logos/O_Reilly_Auto_Parts_Logo.svg" },
+    { name: "Office Depot", logo: "/logos/Office-Depot-Logo.svg" },
+    { name: "Ace Hardware", logo: "/logos/Ace_Hardware_Logo.svg" },
+    { name: "Aaron's Inc.", logo: "/logos/Aaron_s,_Inc._logo.svg" },
+    { name: "DaVita", logo: "/logos/davita-logo-svg-vector.svg" },
+    { name: "Banco Santander", logo: "/logos/Banco_Santander_Logotipo_(2007-2018).svg" },
+    { name: "Charter Fitness", logo: null },
+    { name: "Chipotle", logo: null },
+    { name: "Lowe's", logo: null },
   ]
 
   return (
-    <section className="py-16 bg-muted/30 border-y border-border/60 overflow-hidden">
+    <section className="py-14 bg-background border-y border-border/40 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <div className="text-center">
           <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2 font-medium">
@@ -31,29 +31,24 @@ export function TenantCarousel() {
       </div>
 
       <div className="animate-marquee-pause overflow-hidden">
-        <div className="flex gap-4 animate-marquee w-max">
+        <div className="flex items-center animate-marquee w-max">
           {[...tenants, ...tenants].map((tenant, i) => (
             <div
               key={i}
-              className="flex items-center gap-3 px-6 py-4 bg-background rounded-xl border border-border/60 shadow-sm hover:shadow-md hover:border-accent/40 transition-all duration-300 whitespace-nowrap flex-shrink-0 min-w-[160px]"
+              className="flex items-center justify-center px-10 py-2 flex-shrink-0"
+              style={{ minWidth: "160px" }}
             >
               {tenant.logo ? (
-                <div className="w-24 h-8 flex items-center justify-center flex-shrink-0">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={tenant.logo}
-                    alt={tenant.name}
-                    className="max-h-8 max-w-[96px] object-contain"
-                  />
-                </div>
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={tenant.logo}
+                  alt={tenant.name}
+                  className="max-h-10 max-w-[130px] object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                />
               ) : (
-                <>
-                  <div
-                    className="w-3 h-3 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: tenant.color }}
-                  />
-                  <span className="text-sm font-semibold text-foreground">{tenant.name}</span>
-                </>
+                <span className="text-sm font-semibold text-muted-foreground/60 hover:text-muted-foreground transition-colors whitespace-nowrap">
+                  {tenant.name}
+                </span>
               )}
             </div>
           ))}

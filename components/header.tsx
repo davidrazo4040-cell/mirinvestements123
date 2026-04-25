@@ -63,7 +63,7 @@ export function Header() {
                 className={`text-sm font-medium transition-colors duration-200 ${
                   isScrolled
                     ? "text-foreground/70 hover:text-foreground"
-                    : "text-white/80 hover:text-white"
+                    : "text-white hover:text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.9)]"
                 }`}
               >
                 {label}

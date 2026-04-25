@@ -78,20 +78,20 @@ export function ContactForm() {
     {
       Icon: Mail,
       label: "Email",
-      value: "info@mirinvestments.com",
-      href: "mailto:info@mirinvestments.com",
+      value: "drazo@mirinvestments.com",
+      href: "mailto:drazo@mirinvestments.com",
     },
     {
       Icon: Phone,
       label: "Teléfono",
-      value: "+52 (55) 5555-5555",
-      href: "tel:+525555555555",
+      value: "+52 55 3565 0308",
+      href: "tel:+525535650308",
     },
     {
       Icon: MessageSquare,
       label: "WhatsApp",
-      value: "+52 (55) 5555-5555",
-      href: "https://wa.me/525555555555",
+      value: "+52 55 3565 0308",
+      href: "https://wa.me/525535650308",
     },
   ]
 
