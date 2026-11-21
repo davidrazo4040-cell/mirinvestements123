@@ -229,3 +229,50 @@
   background: hsl(41 55% 61% / 0.3);
   color: hsl(224 50% 9%);
 }
+
+/* Long-form legal documents */
+.legal-prose {
+  color: var(--foreground);
+  font-size: 0.975rem;
+  line-height: 1.8;
+}
+.legal-prose .legal-intro {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: var(--foreground);
+  margin-bottom: 2.5rem;
+}
+.legal-prose h2 {
+  font-family: var(--font-cormorant), serif;
+  font-weight: 400;
+  font-size: 1.85rem;
+  line-height: 1.2;
+  margin: 3rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.legal-prose h3 {
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  margin: 2rem 0 0.75rem;
+}
+.legal-prose p { margin: 0 0 1rem; color: hsl(224 25% 22%); }
+.legal-prose ul, .legal-prose ol { margin: 0 0 1.25rem; padding-left: 1.4rem; color: hsl(224 25% 22%); }
+.legal-prose ul { list-style: disc; }
+.legal-prose ol { list-style: lower-alpha; }
+.legal-prose li { margin: 0.35rem 0; padding-left: 0.25rem; }
+.legal-prose li::marker { color: var(--accent-ink); }
+.legal-prose strong { color: var(--foreground); font-weight: 600; }
+.legal-prose a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+.legal-prose hr { margin: 3rem 0 1.5rem; border: 0; border-top: 1px solid var(--border); }
+.legal-prose .callout {
+  border-left: 2px solid var(--accent);
+  background: hsl(40 30% 95%);
+  padding: 1.1rem 1.4rem;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}

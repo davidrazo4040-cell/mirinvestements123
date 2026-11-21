@@ -3,6 +3,7 @@
 import { Search, FileCheck, Settings, BarChart3, Shield, Globe, CheckCircle2 } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { PresentationAccess } from "@/components/presentation-access"
 
 export function WhyMIR() {
   const scrollToContact = () => {
@@ -134,22 +135,14 @@ export function WhyMIR() {
                 Documentación completa para inversionistas calificados: fichas técnicas, reportes de
                 due diligence, estados financieros y estructura legal.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-wrap gap-4">
                 <Button
                   onClick={scrollToContact}
                   className="btn-gold text-accent-foreground font-semibold hover:-translate-y-0.5"
                 >
                   Solicitar Acceso al Data Room
                 </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-primary-foreground/30 text-primary-foreground bg-transparent hover:bg-primary-foreground/10 hover:border-primary-foreground/60"
-                >
-                  <a href="/mir-investments-portfolio-2026.pdf" download="MIR-Investments-Portfolio-2026.pdf">
-                    Descargar Presentación
-                  </a>
-                </Button>
+                <PresentationAccess onRequestAccess={scrollToContact} />
               </div>
             </div>
             <div className="space-y-3">

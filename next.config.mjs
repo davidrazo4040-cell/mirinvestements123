@@ -2,6 +2,10 @@
 const nextConfig = {
   output: "standalone",
   poweredByHeader: false,
+  // Ship the private PDF with the standalone server (it is not in /public)
+  outputFileTracingIncludes: {
+    "/api/presentation": ["./private/**"],
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
