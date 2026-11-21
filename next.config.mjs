@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+  poweredByHeader: false,
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -36,10 +37,8 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: "frame-ancestors 'self' https://mirinvestments.com https://www.mirinvestments.com https://*.wixsite.com https://editor.wix.com https://*.wix.com",
           },
-          {
-            key: "X-Frame-Options",
-            value: "ALLOWALL",
-          },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         ],
       },
     ]

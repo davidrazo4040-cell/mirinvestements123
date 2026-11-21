@@ -60,7 +60,7 @@ export function FAQSection() {
     <section id="faq" className="py-24 bg-muted/20 border-b border-foreground/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">FAQ</p>
+          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">FAQ</p>
           <h2 className="font-serif text-4xl md:text-5xl font-light text-foreground">
             Preguntas <em className="italic">frecuentes</em>
           </h2>
@@ -73,7 +73,7 @@ export function FAQSection() {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="border-b border-foreground/10 border-t-0">
-                <AccordionTrigger className="text-left text-sm md:text-base font-medium hover:text-accent hover:no-underline py-6 [&>svg]:text-accent">
+                <AccordionTrigger className="text-left text-sm md:text-base font-medium hover:text-accent-ink hover:no-underline py-6 [&>svg]:text-accent-ink">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed text-sm pb-6">
@@ -90,7 +90,7 @@ export function FAQSection() {
                 const element = document.getElementById("contacto")
                 if (element) element.scrollIntoView({ behavior: "smooth" })
               }}
-              className="text-xs tracking-[0.2em] uppercase border-b border-foreground pb-0.5 hover:text-accent hover:border-accent transition-colors duration-200"
+              className="text-xs tracking-[0.2em] uppercase border-b border-foreground pb-0.5 hover:text-accent-ink hover:border-accent transition-colors duration-200"
             >
               Contáctanos directamente →
             </button>

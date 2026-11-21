@@ -11,19 +11,24 @@ export function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
   const [subscribing, setSubscribing] = useState(false)
+  const [subscribeError, setSubscribeError] = useState(false)
 
   const handleNewsletter = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!newsletterEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newsletterEmail)) return
     setSubscribing(true)
+    setSubscribeError(false)
     try {
-      await fetch("/api/lead", {
+      const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ type: "newsletter", email: newsletterEmail, source: "Newsletter Footer" }),
       })
+      if (!res.ok) throw new Error("newsletter_failed")
     } catch {
-      // silently continue
+      setSubscribing(false)
+      setSubscribeError(true)
+      return
     }
     setSubscribing(false)
     setSubscribed(true)
@@ -37,7 +42,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="surface-dark bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
 
@@ -104,7 +109,7 @@ export function Footer() {
               Recibe insights del mercado y oportunidades de inversión
             </p>
             {subscribed ? (
-              <div className="flex items-center gap-2 text-xs text-accent">
+              <div className="flex items-center gap-2 text-xs text-accent-ink">
                 <CheckCircle2 className="h-3.5 w-3.5" />
                 <span>¡Suscrito con éxito!</span>
               </div>
@@ -125,6 +130,11 @@ export function Footer() {
                 >
                   {subscribing ? "Suscribiendo..." : "Suscribirse →"}
                 </button>
+                {subscribeError && (
+                  <p role="alert" className="text-xs text-red-300">
+                    No se pudo suscribir. Intenta de nuevo en unos minutos.
+                  </p>
+                )}
               </form>
             )}
             <p className="text-xs text-primary-foreground/35 mt-4">

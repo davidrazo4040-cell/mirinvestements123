@@ -36,7 +36,7 @@ export function SecurityBadges() {
                 className="flex items-center gap-3 group"
               >
                 <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors duration-300">
-                  <Icon className="h-4 w-4 text-accent" />
+                  <Icon className="h-4 w-4 text-accent-ink" />
                 </div>
                 <div>
                   <div className="text-xs font-semibold text-foreground tracking-wide">

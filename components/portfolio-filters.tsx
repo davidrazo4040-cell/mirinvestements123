@@ -73,7 +73,7 @@ export function PortfolioFilters({ filters, onFilterChange, onReset }: Portfolio
         <p className="text-xs tracking-[0.25em] uppercase font-medium text-foreground">Filtros</p>
         <button
           onClick={onReset}
-          className="text-xs text-muted-foreground hover:text-accent transition-colors duration-200"
+          className="text-xs text-muted-foreground hover:text-accent-ink transition-colors duration-200"
         >
           Limpiar
         </button>

@@ -38,7 +38,7 @@ export function PropertyCard({ property, onRequestInfo }: PropertyCardProps) {
             {property.type}
           </span>
           <span className="ml-auto flex items-center gap-1 text-xs text-muted-foreground">
-            <MapPin className="h-3 w-3 text-accent" />
+            <MapPin className="h-3 w-3 text-accent-ink" />
             {property.city}, {property.state}
           </span>
         </div>
@@ -49,7 +49,7 @@ export function PropertyCard({ property, onRequestInfo }: PropertyCardProps) {
         <div className="grid grid-cols-2 gap-2 mb-5">
           <div className="rounded-lg bg-accent/10 border border-accent/20 px-3 py-2.5">
             <div className="text-xs text-muted-foreground mb-0.5">Cap Rate</div>
-            <div className="text-xl font-bold text-accent">{formatPercent(property.capRate)}</div>
+            <div className="text-xl font-bold text-accent-ink">{formatPercent(property.capRate)}</div>
           </div>
           <div className="rounded-lg bg-primary/5 border border-primary/10 px-3 py-2.5">
             <div className="text-xs text-muted-foreground mb-0.5">IRR Proyectado</div>

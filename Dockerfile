@@ -3,8 +3,8 @@ FROM node:20-alpine AS base
 FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
-COPY package.json .npmrc ./
-RUN npm install --legacy-peer-deps
+COPY package.json package-lock.json .npmrc ./
+RUN npm ci --legacy-peer-deps --no-audit --no-fund
 
 FROM base AS builder
 WORKDIR /app

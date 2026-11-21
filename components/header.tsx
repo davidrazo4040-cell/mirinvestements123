@@ -49,7 +49,7 @@ export function Header() {
               alt="MIR Investments"
               width={60}
               height={76}
-              className="h-12 w-auto"
+              className={`h-12 w-auto transition-[filter] duration-300 ${isScrolled ? "" : "brightness-0 invert"}`}
               priority
             />
           </button>

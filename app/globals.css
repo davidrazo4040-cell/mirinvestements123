@@ -5,39 +5,41 @@
 
 :root {
   /* Dynamic Design — Navy + Gold */
-  --background: 0 0% 99%;
-  --foreground: 222.2 84% 4.9%;
+  --background: hsl(0 0% 99%);
+  --foreground: hsl(222.2 84% 4.9%);
 
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(222.2 84% 4.9%);
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(222.2 84% 4.9%);
 
-  --primary: 222 47% 11%;
-  --primary-foreground: 210 40% 98%;
+  --primary: hsl(222 47% 11%);
+  --primary-foreground: hsl(210 40% 98%);
 
-  --accent: 43 96% 56%;
-  --accent-foreground: 222 47% 11%;
+  --accent: hsl(43 96% 56%);
+  --accent-foreground: hsl(222 47% 11%);
+  /* Deeper gold for text on light backgrounds (WCAG AA on white) */
+  --accent-ink: hsl(36 90% 33%);
 
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  --secondary: hsl(210 40% 96.1%);
+  --secondary-foreground: hsl(222.2 47.4% 11.2%);
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: hsl(210 40% 96.1%);
+  --muted-foreground: hsl(215.4 16.3% 46.9%);
 
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(210 40% 98%);
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 222 47% 11%;
+  --border: hsl(214.3 31.8% 91.4%);
+  --input: hsl(214.3 31.8% 91.4%);
+  --ring: hsl(222 47% 11%);
 
-  --chart-1: 222 47% 11%;
-  --chart-2: 43 96% 56%;
-  --chart-3: 197 37% 24%;
-  --chart-4: 142 76% 36%;
-  --chart-5: 262 52% 47%;
+  --chart-1: hsl(222 47% 11%);
+  --chart-2: hsl(43 96% 56%);
+  --chart-3: hsl(197 37% 24%);
+  --chart-4: hsl(142 76% 36%);
+  --chart-5: hsl(262 52% 47%);
 
   --radius: 0.5rem;
 }
@@ -57,6 +59,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-ink: var(--accent-ink);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -73,6 +76,11 @@
   --radius-xl: calc(var(--radius) + 6px);
   --font-sans: var(--font-inter);
   --font-serif: var(--font-cormorant);
+}
+
+/* On dark navy surfaces, gold text uses the bright brand gold */
+.surface-dark {
+  --accent-ink: var(--accent);
 }
 
 @layer base {

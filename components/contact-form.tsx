@@ -49,8 +49,9 @@ export function ContactForm() {
     e.preventDefault()
     if (!validateForm()) return
     setIsSubmitting(true)
+    setErrors({})
     try {
-      await fetch("/api/lead", {
+      const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -63,8 +64,15 @@ export function ContactForm() {
           source: "Formulario Web MIR",
         }),
       })
+      if (!res.ok) throw new Error(`lead_failed_${res.status}`)
     } catch {
-      // silently continue — user sees success state regardless
+      // Don't pretend it worked — a lost lead is worse than an honest error
+      setIsSubmitting(false)
+      setErrors({
+        submit:
+          "No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos por WhatsApp al +52 55 3565 0308.",
+      })
+      return
     }
     setIsSubmitting(false)
     setIsSuccess(true)
@@ -99,11 +107,11 @@ export function ContactForm() {
     <section id="contacto" className="py-24 bg-muted/20 border-b border-border/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">
+          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">
             Contacto
           </p>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Solicita <span className="text-accent">información</span>
+            Solicita <span className="text-accent-ink">información</span>
           </h2>
           <p className="text-muted-foreground max-w-xl leading-relaxed">
             Completa el formulario y un asesor se pondrá en contacto contigo en menos de 24 horas
@@ -117,7 +125,7 @@ export function ContactForm() {
               <Card key={label} className="border-border/60 hover:border-accent/40 hover:shadow-md transition-all duration-300">
                 <CardContent className="p-5 flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0">
-                    <Icon className="h-4 w-4 text-accent" />
+                    <Icon className="h-4 w-4 text-accent-ink" />
                   </div>
                   <div>
                     <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
@@ -127,7 +135,7 @@ export function ContactForm() {
                       href={href}
                       target={href.startsWith("http") ? "_blank" : undefined}
                       rel="noopener noreferrer"
-                      className="text-sm text-foreground hover:text-accent transition-colors duration-200 font-medium"
+                      className="text-sm text-foreground hover:text-accent-ink transition-colors duration-200 font-medium"
                     >
                       {value}
                     </a>
@@ -139,7 +147,7 @@ export function ContactForm() {
             <Card className="border-border/60">
               <CardContent className="p-5 flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0">
-                  <Clock className="h-4 w-4 text-accent" />
+                  <Clock className="h-4 w-4 text-accent-ink" />
                 </div>
                 <div>
                   <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
@@ -286,7 +294,7 @@ export function ContactForm() {
                         Acepto la{" "}
                         <a
                           href="/privacidad"
-                          className="text-foreground underline hover:text-accent transition-colors"
+                          className="text-foreground underline hover:text-accent-ink transition-colors"
                         >
                           política de privacidad
                         </a>{" "}
@@ -306,6 +314,15 @@ export function ContactForm() {
                     >
                       {isSubmitting ? "Enviando..." : "Solicitar Información →"}
                     </Button>
+
+                    {errors.submit && (
+                      <p
+                        role="alert"
+                        className="text-sm text-destructive text-center bg-destructive/5 border border-destructive/20 rounded-lg px-4 py-3"
+                      >
+                        {errors.submit}
+                      </p>
+                    )}
 
                     <p className="text-xs text-muted-foreground text-center">
                       Un asesor de MIR Investments se pondrá en contacto para discutir oportunidades

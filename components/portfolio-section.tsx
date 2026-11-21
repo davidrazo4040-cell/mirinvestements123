@@ -28,9 +28,11 @@ export function PortfolioSection() {
   const [sortBy, setSortBy] = useState<"capRate" | "irrNet" | "occupancy">("capRate")
 
   const properties = propertiesData as Property[]
+  // The list shows only properties open for investment; sold ones appear on the map only
+  const activeProperties = useMemo(() => properties.filter((p) => p.status !== "sold"), [properties])
 
   const filteredProperties = useMemo(() => {
-    const filtered = properties.filter((property) => {
+    const filtered = activeProperties.filter((property) => {
       if (filters.type.length > 0 && !filters.type.includes(property.type)) return false
       if (filters.state.length > 0 && !filters.state.includes(property.state)) return false
       if (property.capRate < filters.minCapRate || property.capRate > filters.maxCapRate) return false
@@ -55,7 +57,7 @@ export function PortfolioSection() {
     })
 
     return filtered
-  }, [properties, filters, sortBy])
+  }, [activeProperties, filters, sortBy])
 
   const handleRequestInfo = (property: Property) => {
     setSelectedProperty(property)
@@ -78,11 +80,11 @@ export function PortfolioSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-10">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">
+          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">
             Portafolio
           </p>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Nuestras <span className="text-accent">Propiedades</span>
+            Nuestras <span className="text-accent-ink">Propiedades</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
             Propiedades comerciales AAA cuidadosamente seleccionadas en mercados estratégicos de
@@ -93,7 +95,7 @@ export function PortfolioSection() {
         {/* Interactive Map — all properties, always visible */}
         <div className="mb-12">
           <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <MapPin className="h-5 w-5 text-accent" />
+            <MapPin className="h-5 w-5 text-accent-ink" />
             Distribución Geográfica
           </h3>
           <PortfolioMap
@@ -161,7 +163,7 @@ export function PortfolioSection() {
                 ) : (
                   <>
                     <div className="text-xs text-muted-foreground mb-6 tracking-wide">
-                      Mostrando {filteredProperties.length} de {properties.length} propiedades
+                      Mostrando {filteredProperties.length} de {activeProperties.length} propiedades
                     </div>
                     <div className="grid md:grid-cols-2 gap-6">
                       {filteredProperties.map((property) => (

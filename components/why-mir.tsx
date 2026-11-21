@@ -61,11 +61,11 @@ export function WhyMIR() {
     <section id="por-que-mir" className="py-24 bg-background border-b border-border/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">
+          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">
             Diferenciadores
           </p>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Por qué <span className="text-accent">MIR</span> Investments
+            Por qué <span className="text-accent-ink">MIR</span> Investments
           </h2>
           <p className="text-muted-foreground max-w-xl leading-relaxed">
             Acceso institucional a bienes raíces comerciales con el respaldo de un equipo
@@ -83,7 +83,7 @@ export function WhyMIR() {
               >
                 <CardContent className="p-8">
                   <div className="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors duration-300">
-                    <Icon className="h-5 w-5 text-accent" />
+                    <Icon className="h-5 w-5 text-accent-ink" />
                   </div>
                   <h3 className="text-base font-bold mb-3 text-foreground">{benefit.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">
@@ -96,16 +96,16 @@ export function WhyMIR() {
         </div>
 
         {/* Data Room — VIP */}
-        <div className="group relative rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-10 md:p-16 text-primary-foreground overflow-hidden">
+        <div className="surface-dark group relative rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-10 md:p-16 text-primary-foreground overflow-hidden">
 
           {/* "By Invitation Only" overlay on hover */}
           <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
             <div className="absolute inset-0 bg-primary/70 backdrop-blur-sm" />
             <div className="relative flex flex-col items-center gap-3 text-center px-8">
               <div className="w-12 h-12 rounded-full border border-accent/60 flex items-center justify-center mb-1">
-                <Shield className="h-5 w-5 text-accent" />
+                <Shield className="h-5 w-5 text-accent-ink" />
               </div>
-              <p className="text-xs tracking-[0.5em] uppercase text-accent font-semibold">
+              <p className="text-xs tracking-[0.5em] uppercase text-accent-ink font-semibold">
                 By Invitation Only
               </p>
               <p className="text-primary-foreground/70 text-sm max-w-xs leading-relaxed">
@@ -123,12 +123,12 @@ export function WhyMIR() {
           {/* Content */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">
+              <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">
                 Acceso Exclusivo
               </p>
               <h3 className="text-3xl md:text-4xl font-bold mb-6">
                 Data Room{" "}
-                <span className="text-accent">VIP</span>
+                <span className="text-accent-ink">VIP</span>
               </h3>
               <p className="text-primary-foreground/75 mb-10 leading-relaxed text-sm">
                 Documentación completa para inversionistas calificados: fichas técnicas, reportes de
@@ -158,7 +158,7 @@ export function WhyMIR() {
                   key={item}
                   className="flex items-center gap-4 text-sm py-3 border-b border-primary-foreground/10 last:border-0"
                 >
-                  <CheckCircle2 className="h-4 w-4 text-accent flex-shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-accent-ink flex-shrink-0" />
                   <span className="text-primary-foreground/85">{item}</span>
                 </div>
               ))}

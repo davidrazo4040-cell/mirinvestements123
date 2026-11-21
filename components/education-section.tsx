@@ -37,7 +37,7 @@ export function EducationSection() {
     <section className="py-24 bg-background border-b border-foreground/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">Educación</p>
+          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">Educación</p>
           <h2 className="font-serif text-4xl md:text-5xl font-light text-foreground">
             Centro de <em className="italic">recursos</em>
           </h2>
@@ -57,12 +57,12 @@ export function EducationSection() {
                   key={index}
                   className="border-b border-r border-foreground/10 p-8 md:p-10 group hover:bg-muted/30 transition-colors duration-300 cursor-pointer"
                 >
-                  <Icon className="h-4 w-4 text-accent mb-6 opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                  <Icon className="h-4 w-4 text-accent-ink mb-6 opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
                   <h4 className="font-medium text-foreground mb-3 leading-snug">{article.title}</h4>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-6">{article.description}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-muted-foreground">{article.readTime} lectura</span>
-                    <span className="text-xs tracking-wide text-foreground/40 group-hover:text-accent transition-colors duration-200">
+                    <span className="text-xs tracking-wide text-foreground/40 group-hover:text-accent-ink transition-colors duration-200">
                       Leer más →
                     </span>
                   </div>

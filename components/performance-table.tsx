@@ -98,7 +98,7 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
     return (
       <div className="bg-background border border-border/60 rounded-xl px-4 py-3 shadow-2xl">
         <p className="text-xs font-semibold text-muted-foreground mb-1">{label}</p>
-        <p className="text-2xl font-bold text-accent">+{payload[0].value}%</p>
+        <p className="text-2xl font-bold text-accent-ink">+{payload[0].value}%</p>
         <p className="text-xs text-muted-foreground">Retorno Acumulado</p>
       </div>
     )
@@ -114,7 +114,7 @@ function QuarterlyModal({ report, onClose }: { report: typeof quarterlyReports[0
         {/* Modal Header */}
         <div className="sticky top-0 bg-background/95 backdrop-blur-sm border-b border-border/60 px-6 py-5 flex items-center justify-between rounded-t-2xl z-10">
           <div>
-            <p className="text-xs tracking-[0.25em] uppercase text-accent font-medium mb-1">Reporte Trimestral</p>
+            <p className="text-xs tracking-[0.25em] uppercase text-accent-ink font-medium mb-1">Reporte Trimestral</p>
             <h3 className="text-xl font-bold text-foreground">{report.quarter}</h3>
             <p className="text-sm text-muted-foreground">{report.period}</p>
           </div>
@@ -131,7 +131,7 @@ function QuarterlyModal({ report, onClose }: { report: typeof quarterlyReports[0
           <div className="grid grid-cols-2 gap-3">
             {[
               { label: "Ocupación Total", value: report.ocupacion, color: "text-emerald-600", bg: "bg-emerald-50 border-emerald-100" },
-              { label: "NOI Trimestral", value: report.noi, color: "text-accent", bg: "bg-accent/10 border-accent/20" },
+              { label: "NOI Trimestral", value: report.noi, color: "text-accent-ink", bg: "bg-accent/10 border-accent/20" },
               { label: "Distribución / Unidad", value: report.distribucion, color: "text-primary", bg: "bg-primary/5 border-primary/10" },
               { label: "Propiedades Activas", value: `${report.propiedades}`, color: "text-foreground", bg: "bg-muted border-border/60" },
             ].map(({ label, value, color, bg }) => (
@@ -145,21 +145,21 @@ function QuarterlyModal({ report, onClose }: { report: typeof quarterlyReports[0
           {/* Distribution chart */}
           <div>
             <p className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
-              <BarChart2 className="h-4 w-4 text-accent" />
+              <BarChart2 className="h-4 w-4 text-accent-ink" />
               Distribución por Unidad — Últimos 4 Trimestres
             </p>
             <div className="h-40 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={report.quarterlyDist} margin={{ top: 4, right: 8, left: 0, bottom: 4 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.5} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.5} />
                   <XAxis
                     dataKey="q"
-                    tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+                    tick={{ fontSize: 10, fill: "var(--muted-foreground)" }}
                     axisLine={false}
                     tickLine={false}
                   />
                   <YAxis
-                    tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+                    tick={{ fontSize: 10, fill: "var(--muted-foreground)" }}
                     axisLine={false}
                     tickLine={false}
                     tickFormatter={(v) => `$${v.toFixed(3)}`}
@@ -217,9 +217,9 @@ export function PerformanceTable() {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">Resultados</p>
+          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">Resultados</p>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Desempeño <span className="text-accent">histórico</span>
+            Desempeño <span className="text-accent-ink">histórico</span>
           </h2>
           <p className="text-muted-foreground max-w-xl leading-relaxed">
             Track record comprobado desde 2015 con retornos acumulados del 129.5%
@@ -229,7 +229,7 @@ export function PerformanceTable() {
         {/* Summary Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
           {[
-            { label: "Retorno Acumulado", value: "129.5%", sub: "2015 – 2025", color: "text-accent" },
+            { label: "Retorno Acumulado", value: "129.5%", sub: "2015 – 2025", color: "text-accent-ink" },
             { label: "Cap Rate Promedio", value: "~6.5%", sub: "Portafolio NNN", color: "text-primary" },
             { label: "NOI Total Anual", value: "$9.3M", sub: "Propiedades estabilizadas", color: "text-foreground" },
             { label: "IRR Proyectado", value: "18%+", sub: "Valle del Colibrí", color: "text-emerald-600" },
@@ -269,7 +269,7 @@ export function PerformanceTable() {
                 variant="outline"
                 size="sm"
                 onClick={() => setSelectedReport(r)}
-                className="text-xs h-8 px-3 border-accent/30 hover:border-accent hover:text-accent"
+                className="text-xs h-8 px-3 border-accent/30 hover:border-accent hover:text-accent-ink"
               >
                 <FileText className="h-3.5 w-3.5 mr-1.5" />
                 {r.quarter}
@@ -310,30 +310,30 @@ export function PerformanceTable() {
                           <stop offset="95%" stopColor="hsl(43,96%,56%)" stopOpacity={0.02} />
                         </linearGradient>
                       </defs>
-                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.6} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.6} />
                       <XAxis
                         dataKey="year"
-                        tick={{ fontSize: 12, fill: "hsl(var(--muted-foreground))" }}
+                        tick={{ fontSize: 12, fill: "var(--muted-foreground)" }}
                         axisLine={false}
                         tickLine={false}
                       />
                       <YAxis
-                        tick={{ fontSize: 12, fill: "hsl(var(--muted-foreground))" }}
+                        tick={{ fontSize: 12, fill: "var(--muted-foreground)" }}
                         axisLine={false}
                         tickLine={false}
                         tickFormatter={(v) => `${v}%`}
                         width={48}
                       />
                       <Tooltip content={<CustomTooltip />} />
-                      <ReferenceLine y={100} stroke="hsl(var(--accent))" strokeDasharray="4 4" strokeOpacity={0.4} />
+                      <ReferenceLine y={100} stroke="var(--accent)" strokeDasharray="4 4" strokeOpacity={0.4} />
                       <Area
                         type="monotone"
                         dataKey="cumReturn"
                         stroke="hsl(43,96%,56%)"
                         strokeWidth={2.5}
                         fill="url(#goldGradient)"
-                        dot={{ r: 5, fill: "hsl(43,96%,56%)", stroke: "hsl(var(--background))", strokeWidth: 2 }}
-                        activeDot={{ r: 7, fill: "hsl(43,96%,56%)", stroke: "hsl(var(--background))", strokeWidth: 2 }}
+                        dot={{ r: 5, fill: "hsl(43,96%,56%)", stroke: "var(--background)", strokeWidth: 2 }}
+                        activeDot={{ r: 7, fill: "hsl(43,96%,56%)", stroke: "var(--background)", strokeWidth: 2 }}
                       />
                     </AreaChart>
                   </ResponsiveContainer>
@@ -363,7 +363,7 @@ export function PerformanceTable() {
                         <TableCell className="text-right font-mono text-sm">{formatCurrency(row.noi)}</TableCell>
                         <TableCell className="text-right font-mono text-sm">{formatCurrency(row.value)}</TableCell>
                         <TableCell className="text-right">
-                          <span className="font-bold text-accent">{row.capRate}%</span>
+                          <span className="font-bold text-accent-ink">{row.capRate}%</span>
                         </TableCell>
                         <TableCell className="text-right text-sm text-muted-foreground">{row.leaseEnd}</TableCell>
                       </TableRow>
@@ -384,7 +384,7 @@ export function PerformanceTable() {
           <Button
             variant="outline"
             size="sm"
-            className="flex items-center gap-2 border-accent/30 hover:border-accent hover:text-accent flex-shrink-0"
+            className="flex items-center gap-2 border-accent/30 hover:border-accent hover:text-accent-ink flex-shrink-0"
             onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
           >
             <Download className="h-4 w-4" />

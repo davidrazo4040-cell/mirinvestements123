@@ -12,11 +12,20 @@ export function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="surface-dark relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85"
+        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=70"
+        srcSet={[640, 1024, 1600, 2200]
+          .map(
+            (w) =>
+              `https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=${w}&q=70 ${w}w`,
+          )
+          .join(", ")}
+        sizes="100vw"
+        fetchPriority="high"
+        decoding="async"
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
         aria-hidden="true"
@@ -30,7 +39,7 @@ export function Hero() {
           {/* Badge */}
           <div className="animate-fade-in inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/40 bg-accent/10 backdrop-blur-sm mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            <span className="text-xs tracking-[0.25em] uppercase text-accent font-medium">
+            <span className="text-xs tracking-[0.25em] uppercase text-accent-ink font-medium">
               Capital Institucional Privado
             </span>
           </div>
@@ -38,7 +47,7 @@ export function Hero() {
           {/* Heading */}
           <h1 className="animate-fade-in-up delay-100 font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white leading-[1.05] mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
             Inmuebles comerciales{" "}
-            <span className="text-accent italic">AAA</span>{" "}
+            <span className="text-accent-ink italic">AAA</span>{" "}
             en EE.UU.
           </h1>
 
@@ -75,7 +84,7 @@ export function Hero() {
               { icon: DollarSign, text: "Inversión dolarizada desde USD 200K" },
             ].map(({ icon: Icon, text }, i) => (
               <div key={i} className="flex items-center justify-center gap-2.5 text-sm text-white/70">
-                <Icon className="h-4 w-4 text-accent flex-shrink-0" />
+                <Icon className="h-4 w-4 text-accent-ink flex-shrink-0" />
                 <span className="text-left">{text}</span>
               </div>
             ))}

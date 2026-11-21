@@ -32,7 +32,7 @@ export function Testimonials() {
     <section className="py-24 bg-background border-y border-foreground/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-medium">Testimonios</p>
+          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">Testimonios</p>
           <h2 className="font-serif text-4xl md:text-5xl font-light text-foreground">
             Lo que dicen nuestros<br />
             <em className="italic">inversionistas</em>
@@ -46,7 +46,7 @@ export function Testimonials() {
               className="border-b border-r border-foreground/10 p-10 md:p-12 group hover:bg-muted/40 transition-colors duration-300"
             >
               {/* Large opening quote */}
-              <div className="font-serif text-6xl font-light text-accent/30 leading-none mb-4 group-hover:text-accent/50 transition-colors duration-300">
+              <div className="font-serif text-6xl font-light text-accent-ink/30 leading-none mb-4 group-hover:text-accent-ink/50 transition-colors duration-300">
                 "
               </div>
 
