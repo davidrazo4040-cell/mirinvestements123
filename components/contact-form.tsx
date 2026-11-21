@@ -107,11 +107,11 @@ export function ContactForm() {
     <section id="contacto" className="py-24 bg-muted/20 border-b border-border/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">
+          <p className="eyebrow text-xs tracking-[0.3em] uppercase text-accent-ink mb-5 font-medium">
             Contacto
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Solicita <span className="text-accent-ink">información</span>
+          <h2 className="font-serif text-4xl md:text-6xl font-light tracking-tight leading-[1.05] mb-5 text-foreground">
+            Solicita <em className="italic text-accent-ink">información</em>
           </h2>
           <p className="text-muted-foreground max-w-xl leading-relaxed">
             Completa el formulario y un asesor se pondrá en contacto contigo en menos de 24 horas
@@ -169,7 +169,7 @@ export function ContactForm() {
                     <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-6">
                       <CheckCircle2 className="h-8 w-8 text-green-600" />
                     </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-3">Solicitud recibida</h3>
+                    <h3 className="font-serif text-3xl font-light text-foreground mb-3">Solicitud recibida</h3>
                     <p className="text-sm text-muted-foreground max-w-xs">
                       Gracias por tu interés. Un asesor se pondrá en contacto contigo pronto.
                     </p>

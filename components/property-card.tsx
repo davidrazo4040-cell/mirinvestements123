@@ -22,9 +22,9 @@ export function PropertyCard({ property, onRequestInfo }: PropertyCardProps) {
   const risk = riskColors[property.riskProfile] ?? riskColors.default
 
   return (
-    <Card className="overflow-hidden h-full flex flex-col group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border-border/60">
+    <Card className="overflow-hidden h-full flex flex-col group hover:shadow-[0_28px_56px_-28px_hsl(224_50%_9%/0.3)] hover:border-accent/40 transition-all duration-500 border-border/70">
       {/* Premium header strip */}
-      <div className="h-1.5 w-full bg-gradient-to-r from-accent/80 via-accent to-accent/60" />
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-accent to-transparent" />
 
       <CardContent className="p-6 flex-1 flex flex-col">
         {/* Badges row */}
@@ -43,17 +43,17 @@ export function PropertyCard({ property, onRequestInfo }: PropertyCardProps) {
           </span>
         </div>
 
-        <h3 className="font-bold text-lg text-foreground leading-tight mb-5">{property.name}</h3>
+        <h3 className="font-serif text-2xl font-normal text-foreground leading-tight mb-5">{property.name}</h3>
 
         {/* Key Metrics Chips */}
         <div className="grid grid-cols-2 gap-2 mb-5">
           <div className="rounded-lg bg-accent/10 border border-accent/20 px-3 py-2.5">
             <div className="text-xs text-muted-foreground mb-0.5">Cap Rate</div>
-            <div className="text-xl font-bold text-accent-ink">{formatPercent(property.capRate)}</div>
+            <div className="font-serif text-2xl font-medium text-accent-ink">{formatPercent(property.capRate)}</div>
           </div>
           <div className="rounded-lg bg-primary/5 border border-primary/10 px-3 py-2.5">
             <div className="text-xs text-muted-foreground mb-0.5">IRR Proyectado</div>
-            <div className="text-xl font-bold text-primary">{formatPercent(property.irrNet)}</div>
+            <div className="font-serif text-2xl font-medium text-primary">{formatPercent(property.irrNet)}</div>
           </div>
           <div className="rounded-lg bg-emerald-50 border border-emerald-100 px-3 py-2.5">
             <div className="text-xs text-muted-foreground mb-0.5">

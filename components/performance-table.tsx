@@ -115,7 +115,7 @@ function QuarterlyModal({ report, onClose }: { report: typeof quarterlyReports[0
         <div className="sticky top-0 bg-background/95 backdrop-blur-sm border-b border-border/60 px-6 py-5 flex items-center justify-between rounded-t-2xl z-10">
           <div>
             <p className="text-xs tracking-[0.25em] uppercase text-accent-ink font-medium mb-1">Reporte Trimestral</p>
-            <h3 className="text-xl font-bold text-foreground">{report.quarter}</h3>
+            <h3 className="font-serif text-2xl font-normal text-foreground">{report.quarter}</h3>
             <p className="text-sm text-muted-foreground">{report.period}</p>
           </div>
           <button
@@ -189,7 +189,7 @@ function QuarterlyModal({ report, onClose }: { report: typeof quarterlyReports[0
           <div className="flex gap-3 pt-2 border-t border-border/60">
             <Button
               size="sm"
-              className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+              className="flex-1 btn-gold text-accent-foreground font-semibold"
               onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
             >
               Solicitar Reporte Completo →
@@ -217,9 +217,9 @@ export function PerformanceTable() {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">Resultados</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Desempeño <span className="text-accent-ink">histórico</span>
+          <p className="eyebrow text-xs tracking-[0.3em] uppercase text-accent-ink mb-5 font-medium">Resultados</p>
+          <h2 className="font-serif text-4xl md:text-6xl font-light tracking-tight leading-[1.05] mb-5 text-foreground">
+            Desempeño <em className="italic text-accent-ink">histórico</em>
           </h2>
           <p className="text-muted-foreground max-w-xl leading-relaxed">
             Track record comprobado desde 2015 con retornos acumulados del 129.5%
@@ -236,8 +236,8 @@ export function PerformanceTable() {
           ].map(({ label, value, sub, color }) => (
             <Card key={label} className="border-border/60">
               <CardContent className="p-5 text-center">
-                <div className={`text-2xl font-bold mb-1 ${color}`}>{value}</div>
-                <div className="text-xs font-semibold text-foreground mb-0.5">{label}</div>
+                <div className={`font-serif text-4xl font-light mb-2 ${color}`}>{value}</div>
+                <div className="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-foreground mb-1">{label}</div>
                 <div className="text-xs text-muted-foreground">{sub}</div>
               </CardContent>
             </Card>

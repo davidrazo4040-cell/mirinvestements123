@@ -43,9 +43,9 @@ export function HowItWorks() {
     <section id="como-funciona" className="py-24 bg-muted/30 border-b border-border/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">Proceso</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Cómo <span className="text-accent-ink">funciona</span>
+          <p className="eyebrow text-xs tracking-[0.3em] uppercase text-accent-ink mb-5 font-medium">Proceso</p>
+          <h2 className="font-serif text-4xl md:text-6xl font-light tracking-tight leading-[1.05] mb-5 text-foreground">
+            Cómo <em className="italic text-accent-ink">funciona</em>
           </h2>
           <p className="text-muted-foreground max-w-xl leading-relaxed">
             Proceso simple y transparente en 3 pasos para comenzar a invertir en bienes raíces
@@ -62,20 +62,20 @@ export function HowItWorks() {
             return (
               <Card
                 key={index}
-                className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-border/60 relative"
+                className="group hover:shadow-[0_24px_48px_-24px_hsl(224_50%_9%/0.25)] hover:border-accent/40 transition-all duration-500 border-border/70 relative"
               >
                 <CardContent className="p-8 md:p-10">
                   {/* Step number — large translucent background */}
-                  <div className="absolute top-6 right-6 font-bold text-6xl text-foreground/[0.04] select-none leading-none group-hover:text-accent-ink/10 transition-colors duration-300">
+                  <div className="absolute top-6 right-7 font-serif font-light italic text-7xl text-foreground/[0.07] select-none leading-none group-hover:text-accent-ink/25 transition-colors duration-500">
                     {step.number}
                   </div>
 
                   {/* Icon in rounded square */}
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
+                  <div className="w-12 h-12 rounded-full border border-accent/40 flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors duration-500">
                     <Icon className="h-5 w-5 text-accent-ink" />
                   </div>
 
-                  <h3 className="text-lg font-bold mb-3 text-foreground">{step.title}</h3>
+                  <h3 className="font-serif text-2xl font-normal mb-3 text-foreground">{step.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-8">
                     {step.description}
                   </p>

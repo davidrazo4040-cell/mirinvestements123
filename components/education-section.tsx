@@ -37,9 +37,9 @@ export function EducationSection() {
     <section className="py-24 bg-background border-b border-foreground/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">Educación</p>
-          <h2 className="font-serif text-4xl md:text-5xl font-light text-foreground">
-            Centro de <em className="italic">recursos</em>
+          <p className="eyebrow text-xs tracking-[0.3em] uppercase text-accent-ink mb-5 font-medium">Educación</p>
+          <h2 className="font-serif text-4xl md:text-6xl font-light tracking-tight leading-[1.05] text-foreground">
+            Centro de <em className="italic text-accent-ink">recursos</em>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-xl leading-relaxed">
             Recursos para ayudarte a tomar decisiones informadas sobre inversiones inmobiliarias

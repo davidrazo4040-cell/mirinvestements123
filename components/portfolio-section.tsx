@@ -80,11 +80,11 @@ export function PortfolioSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-10">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">
+          <p className="eyebrow text-xs tracking-[0.3em] uppercase text-accent-ink mb-5 font-medium">
             Portafolio
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Nuestras <span className="text-accent-ink">Propiedades</span>
+          <h2 className="font-serif text-4xl md:text-6xl font-light tracking-tight leading-[1.05] mb-5 text-foreground">
+            Nuestras <em className="italic text-accent-ink">Propiedades</em>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
             Propiedades comerciales AAA cuidadosamente seleccionadas en mercados estratégicos de

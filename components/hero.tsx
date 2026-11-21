@@ -12,7 +12,7 @@ export function Hero() {
   }
 
   return (
-    <section className="surface-dark relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="surface-dark grain relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -47,7 +47,7 @@ export function Hero() {
           {/* Heading */}
           <h1 className="animate-fade-in-up delay-100 font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white leading-[1.05] mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
             Inmuebles comerciales{" "}
-            <span className="text-accent-ink italic">AAA</span>{" "}
+            <span className="text-gold-metallic italic pr-2">AAA</span>{" "}
             en EE.UU.
           </h1>
 
@@ -62,7 +62,7 @@ export function Hero() {
             <Button
               onClick={scrollToContact}
               size="lg"
-              className="text-base px-8 py-6 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-xl shadow-accent/20 hover:shadow-2xl hover:shadow-accent/30 hover:-translate-y-0.5 transition-all duration-200 font-semibold"
+              className="px-10 py-6 h-auto btn-gold text-accent-foreground hover:-translate-y-0.5 font-semibold"
             >
               Solicita Información
             </Button>
@@ -70,7 +70,7 @@ export function Hero() {
               onClick={scrollToPortfolio}
               variant="outline"
               size="lg"
-              className="text-base px-8 py-6 h-auto bg-transparent border-white/40 text-white hover:bg-white/10 hover:border-white hover:-translate-y-0.5 transition-all duration-200"
+              className="px-10 py-6 h-auto bg-transparent border-white/30 text-white backdrop-blur-sm hover:bg-white/10 hover:border-accent/70 hover:-translate-y-0.5 transition-all duration-200"
             >
               Ver Portafolio
             </Button>

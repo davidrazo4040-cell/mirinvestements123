@@ -21,7 +21,7 @@ export function TenantCarousel() {
           <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2 font-medium">
             Inquilinos Reconocidos
           </p>
-          <h2 className="text-2xl md:text-3xl font-bold">
+          <h2 className="font-serif text-3xl md:text-4xl font-light tracking-tight text-foreground">
             Tenants AAA en nuestras propiedades
           </h2>
           <p className="text-muted-foreground mt-2 text-sm">

@@ -60,7 +60,7 @@ export function Header() {
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className={`text-sm font-medium transition-colors duration-200 ${
+                className={`text-[0.72rem] font-medium uppercase tracking-[0.2em] transition-colors duration-200 ${
                   isScrolled
                     ? "text-foreground/70 hover:text-foreground"
                     : "text-white hover:text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.9)]"
@@ -72,7 +72,7 @@ export function Header() {
             <Button
               onClick={() => scrollToSection("contacto")}
               size="sm"
-              className="ml-2 bg-accent hover:bg-accent/90 text-accent-foreground shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 font-semibold"
+              className="ml-2 btn-gold text-accent-foreground hover:-translate-y-0.5 font-semibold"
             >
               Solicita Información
             </Button>
@@ -106,7 +106,7 @@ export function Header() {
               <div className="px-4 pt-3 pb-2">
                 <Button
                   onClick={() => scrollToSection("contacto")}
-                  className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+                  className="w-full btn-gold text-accent-foreground font-semibold"
                 >
                   Solicita Información
                 </Button>

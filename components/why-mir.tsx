@@ -61,11 +61,11 @@ export function WhyMIR() {
     <section id="por-que-mir" className="py-24 bg-background border-b border-border/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">
+          <p className="eyebrow text-xs tracking-[0.3em] uppercase text-accent-ink mb-5 font-medium">
             Diferenciadores
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Por qué <span className="text-accent-ink">MIR</span> Investments
+          <h2 className="font-serif text-4xl md:text-6xl font-light tracking-tight leading-[1.05] mb-5 text-foreground">
+            Por qué <em className="italic text-accent-ink">MIR</em> Investments
           </h2>
           <p className="text-muted-foreground max-w-xl leading-relaxed">
             Acceso institucional a bienes raíces comerciales con el respaldo de un equipo
@@ -85,7 +85,7 @@ export function WhyMIR() {
                   <div className="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors duration-300">
                     <Icon className="h-5 w-5 text-accent-ink" />
                   </div>
-                  <h3 className="text-base font-bold mb-3 text-foreground">{benefit.title}</h3>
+                  <h3 className="font-serif text-xl font-normal mb-3 text-foreground">{benefit.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     {benefit.description}
                   </p>
@@ -96,7 +96,7 @@ export function WhyMIR() {
         </div>
 
         {/* Data Room — VIP */}
-        <div className="surface-dark group relative rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-10 md:p-16 text-primary-foreground overflow-hidden">
+        <div className="surface-dark grain group relative rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-10 md:p-16 text-primary-foreground overflow-hidden">
 
           {/* "By Invitation Only" overlay on hover */}
           <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
@@ -113,7 +113,7 @@ export function WhyMIR() {
               </p>
               <Button
                 onClick={scrollToContact}
-                className="mt-2 pointer-events-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
+                className="mt-2 pointer-events-auto btn-gold text-accent-foreground font-semibold hover:-translate-y-0.5"
               >
                 Solicitar Acceso
               </Button>
@@ -123,12 +123,12 @@ export function WhyMIR() {
           {/* Content */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">
+              <p className="eyebrow text-xs tracking-[0.3em] uppercase text-accent-ink mb-5 font-medium">
                 Acceso Exclusivo
               </p>
-              <h3 className="text-3xl md:text-4xl font-bold mb-6">
+              <h3 className="font-serif text-4xl md:text-5xl font-light mb-6">
                 Data Room{" "}
-                <span className="text-accent-ink">VIP</span>
+                <em className="italic text-gold-metallic pr-1">VIP</em>
               </h3>
               <p className="text-primary-foreground/75 mb-10 leading-relaxed text-sm">
                 Documentación completa para inversionistas calificados: fichas técnicas, reportes de
@@ -137,7 +137,7 @@ export function WhyMIR() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   onClick={scrollToContact}
-                  className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
+                  className="btn-gold text-accent-foreground font-semibold hover:-translate-y-0.5"
                 >
                   Solicitar Acceso al Data Room
                 </Button>

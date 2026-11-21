@@ -32,10 +32,10 @@ export function Testimonials() {
     <section className="py-24 bg-background border-y border-foreground/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">Testimonios</p>
-          <h2 className="font-serif text-4xl md:text-5xl font-light text-foreground">
+          <p className="eyebrow text-xs tracking-[0.3em] uppercase text-accent-ink mb-5 font-medium">Testimonios</p>
+          <h2 className="font-serif text-4xl md:text-6xl font-light tracking-tight leading-[1.05] text-foreground">
             Lo que dicen nuestros<br />
-            <em className="italic">inversionistas</em>
+            <em className="italic text-accent-ink">inversionistas</em>
           </h2>
         </div>
 

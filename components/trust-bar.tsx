@@ -55,7 +55,7 @@ export function TrustBar() {
   const counts = [count0, count1, count2, count3]
 
   return (
-    <section ref={ref} className="surface-dark py-16 bg-primary relative overflow-hidden">
+    <section ref={ref} className="surface-dark grain py-20 bg-primary relative overflow-hidden border-y border-accent/15">
       {/* Background dot pattern */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -71,11 +71,11 @@ export function TrustBar() {
             return (
               <div key={index} className="text-center group">
                 <Icon className="h-5 w-5 mx-auto mb-3 text-accent-ink/60 group-hover:text-accent-ink transition-colors duration-300" />
-                <div className="text-4xl md:text-5xl font-bold text-accent-ink mb-1 leading-none tabular-nums">
+                <div className="font-serif text-5xl md:text-6xl font-light text-gold-metallic mb-3 leading-none tabular-nums">
                   {counts[index]}
                   {stat.suffix}
                 </div>
-                <div className="text-sm font-semibold text-primary-foreground mb-0.5">{stat.label}</div>
+                <div className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-primary-foreground/90 mb-1">{stat.label}</div>
                 <div className="text-xs text-primary-foreground/50">{stat.description}</div>
               </div>
             )

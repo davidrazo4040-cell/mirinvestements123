@@ -20,12 +20,12 @@ const COLORS = {
   stateSold: "hsl(220, 30%, 27%)",
   stateSoldHover: "hsl(220, 30%, 31%)",
   stateSoldStroke: "hsl(220, 25%, 40%)",
-  stateActive: "hsl(40, 45%, 26%)",
-  stateActiveHover: "hsl(40, 50%, 31%)",
-  stateActiveStroke: "hsl(43, 85%, 55%)",
-  gold: "hsl(43, 96%, 56%)",
+  stateActive: "hsl(38, 32%, 25%)",
+  stateActiveHover: "hsl(38, 36%, 30%)",
+  stateActiveStroke: "hsl(41, 58%, 62%)",
+  gold: "hsl(41, 58%, 62%)",
   soldMarker: "hsl(215, 30%, 72%)",
-  navy: "hsl(222, 47%, 11%)",
+  navy: "hsl(224, 50%, 9%)",
 }
 
 interface PortfolioMapProps {
@@ -243,7 +243,7 @@ export function PortfolioMap({ properties, selectedProperty, onPropertySelect }:
 
             <button
               onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
-              className="w-full mt-4 py-2 text-xs font-semibold tracking-wide uppercase bg-accent hover:bg-accent/90 text-accent-foreground rounded-lg transition-colors duration-200"
+              className="w-full mt-4 py-2 text-xs font-semibold tracking-wide uppercase btn-gold text-accent-foreground rounded-lg transition-colors duration-200"
             >
               Solicitar Info →
             </button>

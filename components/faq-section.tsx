@@ -60,9 +60,9 @@ export function FAQSection() {
     <section id="faq" className="py-24 bg-muted/20 border-b border-foreground/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-accent-ink mb-4 font-medium">FAQ</p>
-          <h2 className="font-serif text-4xl md:text-5xl font-light text-foreground">
-            Preguntas <em className="italic">frecuentes</em>
+          <p className="eyebrow text-xs tracking-[0.3em] uppercase text-accent-ink mb-5 font-medium">FAQ</p>
+          <h2 className="font-serif text-4xl md:text-6xl font-light tracking-tight leading-[1.05] text-foreground">
+            Preguntas <em className="italic text-accent-ink">frecuentes</em>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-xl leading-relaxed">
             Respuestas a las preguntas más comunes sobre inversión en bienes raíces comerciales con MIR
