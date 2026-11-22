@@ -276,3 +276,16 @@
   margin: 1.5rem 0;
   font-size: 0.95rem;
 }
+
+/* Film section: frame opens from a framed card to full width as it scrolls in */
+.film-frame {
+  --film-p: 0;
+  transform: scale(calc(0.86 + 0.14 * var(--film-p)));
+  border-radius: calc(28px - 18px * var(--film-p));
+  opacity: calc(0.55 + 0.45 * var(--film-p));
+  will-change: transform;
+  transform-origin: center top;
+}
+@media (prefers-reduced-motion: reduce) {
+  .film-frame { transform: none; opacity: 1; border-radius: 10px; }
+}
